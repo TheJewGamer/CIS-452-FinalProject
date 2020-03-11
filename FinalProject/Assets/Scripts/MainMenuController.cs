@@ -1,19 +1,17 @@
 ﻿/*
     * Jacob Cohen
     * MainMenuController.cs
-    * Assignment #7
+    * Final Project
     * controls the main menu
 */
 
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
     public GameObject mainMenu;
+    public GameObject versionMenu;
     public GameObject tutMenu;
 
     // Start is called before the first frame update
@@ -21,11 +19,30 @@ public class MainMenuController : MonoBehaviour
     {
         mainMenu.SetActive(true);
         tutMenu.SetActive(false);
+        versionMenu.SetActive(false);
     }
 
     public void StartPushed()
     {
         mainMenu.SetActive(false);
+        versionMenu.SetActive(true);
+    }
+
+    public void funnyVersion()
+    {
+        //set something maybe
+
+        //menus
+        versionMenu.SetActive(false);
+        tutMenu.SetActive(true);
+    }
+
+    public void normalVersion()
+    {
+        //set something maybe
+
+        //menus
+        versionMenu.SetActive(false);
         tutMenu.SetActive(true);
     }
 

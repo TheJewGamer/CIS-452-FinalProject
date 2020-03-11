@@ -1,13 +1,10 @@
 ﻿/*
     * Jacob Cohen
     * WinLoseMenuController.cs
-    * Assignment #7
+    * Final Project
     * controls the win and lose menu
 */
 
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
