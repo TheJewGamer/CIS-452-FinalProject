@@ -1,7 +1,7 @@
 /*
     * Jacob Cohen
     * PlayerController.cs
-    * Assignment #7
+    * Final Project
     * controls player movement
 */
 
