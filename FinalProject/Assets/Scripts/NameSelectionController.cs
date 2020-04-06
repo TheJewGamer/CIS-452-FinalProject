@@ -9,6 +9,7 @@ public class NameSelectionController : MonoBehaviour
     public Text companion3Text;
     public Text companion4Text;
     public Text carText;
+    public LevelLoader loader;
 
     public void Companion1Set()
     {
@@ -37,7 +38,7 @@ public class NameSelectionController : MonoBehaviour
         if(companion1Text.text != null || companion2Text.text != null || companion3Text.text != null || companion4Text.text != null || carText.text != null)
         {
             //load overworld
-            gameObject.GetComponent<LevelLoader>().StartCoroutine("FadeToBlack", "Overworld");
+            loader.StartCoroutine("FadeToBlack", "Overworld");
         }
         else
         {

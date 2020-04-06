@@ -1882,6 +1882,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423525698}
   m_CullTransparentMesh: 0
+--- !u!114 &1553890587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5874011390943332829, guid: c3080a4b0ba8a13419fcd497d6ff9568,
+    type: 3}
+  m_PrefabInstance: {fileID: 420551159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a909d5d17449b43bee80d43c7d1f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1563517243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2453,11 +2465,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec792a9e61923e6439b4e0378f05493e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  companion1Text: {fileID: 0}
-  companion2Text: {fileID: 0}
-  companion3Text: {fileID: 0}
-  companion4Text: {fileID: 0}
-  carText: {fileID: 0}
+  companion1Text: {fileID: 1423525700}
+  companion2Text: {fileID: 1585127365}
+  companion3Text: {fileID: 1724519573}
+  companion4Text: {fileID: 1918580073}
+  carText: {fileID: 321039590}
+  loader: {fileID: 1553890587}
 --- !u!1 &1918580071
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,7 +2629,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2062920429}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1860420815}
+        m_MethodName: ConfirmPush
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2062920429
 MonoBehaviour:
   m_ObjectHideFlags: 0

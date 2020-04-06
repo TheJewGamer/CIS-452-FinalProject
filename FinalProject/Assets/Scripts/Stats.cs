@@ -8,17 +8,17 @@
 public static class Stats
 {
     //variables
-    private static string companion1Name;
-    private static string companion2Name;
-    private static string companion3Name;
-    private static string companion4Name;
-    private static string carName;
+    private static string companion1Name = null;
+    private static string companion2Name = null;
+    private static string companion3Name = null;
+    private static string companion4Name = null;
+    private static string carName = null;
 
-    private static int companion1Health;
-    private static int companion2Health;
-    private static int companion3Health;
-    private static int companion4Health;
-    private static int carHealth;
+    private static float companion1Health = 10;
+    private static float companion2Health = 10;
+    private static float companion3Health = 10;
+    private static float companion4Health = 10;
+    private static float carHealth = 10;
 
     public static string Companion1Name
     {
@@ -80,7 +80,7 @@ public static class Stats
         }
     }
 
-    public static int Companion1Health
+    public static float Companion1Health
     {
         get
         {
@@ -92,7 +92,7 @@ public static class Stats
         }
     }
 
-    public static int Companion2Health
+    public static float Companion2Health
     {
         get
         {
@@ -104,7 +104,7 @@ public static class Stats
         }
     }
 
-    public static int Companion3Health
+    public static float Companion3Health
     {
         get
         {
@@ -116,7 +116,7 @@ public static class Stats
         }
     }
 
-    public static int Companion4Health
+    public static float Companion4Health
     {
         get
         {
@@ -128,7 +128,7 @@ public static class Stats
         }
     }
 
-    public static int CarHealth
+    public static float CarHealth
     {
         get
         {
