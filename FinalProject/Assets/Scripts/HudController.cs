@@ -10,14 +10,21 @@ public class HudController : MonoBehaviour
     public Text companion4Text;
     public Text carText;
 
-    public Slider companion1Slider;
-    public Slider companion2Slider;
-    public Slider companion3Slider;
-    public Slider companion4Slider;
-    public Slider carSlider;
+    private Slider companion1Slider;
+    private Slider companion2Slider;
+    private Slider companion3Slider;
+    private Slider companion4Slider;
+    private Slider carSlider;
 
     void Start()
     {
+        //get componets
+        companion1Slider = companion1Text.gameObject.GetComponentInChildren<Slider>();
+        companion2Slider = companion2Text.gameObject.GetComponentInChildren<Slider>();
+        companion3Slider = companion3Text.gameObject.GetComponentInChildren<Slider>();
+        companion4Slider = companion4Text.gameObject.GetComponentInChildren<Slider>();
+        carSlider = carText.gameObject.GetComponentInChildren<Slider>();
+
         //set names
         companion1Text.text = Stats.Companion1Name;
         companion2Text.text = Stats.Companion2Name;
@@ -35,7 +42,7 @@ public class HudController : MonoBehaviour
 
     public void updateHealth(string character, bool healing)
     {
-        if(character == "car")
+        if(character == "car" && !Stats.CarDestroyed)
         {
             //check to see if to add or remove health
             if(healing)
@@ -47,13 +54,19 @@ public class HudController : MonoBehaviour
             {
                 carSlider.value--;
                 Stats.CarHealth = carSlider.value;
+
+                //check to see if dead
+                if(Stats.CarHealth == 0)
+                {
+                    Stats.CarDestroyed = true;
+                }
             }
 
             //call
             ColorHealthCheck(carSlider);
         }
-        else if(character == "comp1")
-        {
+        else if(character == "comp1" && !Stats.Companion1Dead)
+        { 
             //check to see if to add or remove health
             if(healing)
             {
@@ -64,12 +77,18 @@ public class HudController : MonoBehaviour
             {
                 companion1Slider.value--;
                 Stats.Companion1Health = companion1Slider.value;
+
+                //check to see if dead
+                if(Stats.Companion1Health == 0)
+                {
+                    Stats.Companion1Dead = true;
+                }
             }
 
             //call
             ColorHealthCheck(companion1Slider);
         }
-        else if(character == "comp2")
+        else if(character == "comp2" && !Stats.Companion4Dead)
         {
             //check to see if to add or remove health
             if(healing)
@@ -81,12 +100,18 @@ public class HudController : MonoBehaviour
             {
                 companion2Slider.value--;
                 Stats.Companion2Health = companion2Slider.value;
+
+                //check to see if dead
+                if(Stats.Companion2Health == 0)
+                {
+                    Stats.Companion2Dead = true;
+                }
             }
 
             //call
             ColorHealthCheck(companion2Slider);
         }
-        else if(character == "comp3")
+        else if(character == "comp3" && !Stats.Companion3Dead)
         {
             //check to see if to add or remove health
             if(healing)
@@ -98,12 +123,18 @@ public class HudController : MonoBehaviour
             {
                 companion3Slider.value--;
                 Stats.Companion3Health = companion3Slider.value;
+
+                //check to see if dead
+                if(Stats.Companion3Health == 0)
+                {
+                    Stats.Companion3Dead = true;
+                }
             }
 
             //call
             ColorHealthCheck(companion3Slider);
         }
-        else if(character == "comp4")
+        else if(character == "comp4" && !Stats.Companion4Dead)
         {
             //check to see if to add or remove health
             if(healing)
@@ -115,6 +146,12 @@ public class HudController : MonoBehaviour
             {
                 companion4Slider.value--;
                 Stats.Companion4Health = companion4Slider.value;
+
+                //check to see if dead
+                if(Stats.Companion4Health == 0)
+                {
+                    Stats.Companion4Dead = true;
+                }
             }
 
             //call

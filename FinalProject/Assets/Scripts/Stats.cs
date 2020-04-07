@@ -20,6 +20,12 @@ public static class Stats
     private static float companion4Health = 10;
     private static float carHealth = 10;
 
+    private static bool companion1Dead = false;
+    private static bool companion2Dead = false;
+    private static bool companion3Dead = false;
+    private static bool companion4Dead = false;
+    private static bool carDestroyed = false;
+
     public static string Companion1Name
     {
         get
@@ -137,6 +143,62 @@ public static class Stats
         set
         {
             carHealth = value;
+        }
+    }
+
+    public static bool Companion1Dead
+    {
+        get
+        {
+            return companion1Dead;
+        }
+        set
+        {
+            companion1Dead = value;
+        }
+    }
+    public static bool Companion2Dead
+    {
+        get
+        {
+            return companion2Dead;
+        }
+        set
+        {
+            companion2Dead = value;
+        }
+    }
+    public static bool Companion3Dead
+    {
+        get
+        {
+            return companion3Dead;
+        }
+        set
+        {
+            companion3Dead = value;
+        }
+    }
+    public static bool Companion4Dead
+    {
+        get
+        {
+            return companion4Dead;
+        }
+        set
+        {
+            companion4Dead = value;
+        }
+    }
+    public static bool CarDestroyed
+    {
+        get
+        {
+            return carDestroyed;
+        }
+        set
+        {
+            carDestroyed = value;
         }
     }
 }
