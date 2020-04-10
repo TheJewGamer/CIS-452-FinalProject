@@ -54,7 +54,7 @@ InputManager:
     axis: 0
     joyNum: 10
   - serializedVersion: 3
-    m_Name: Meele
+    m_Name: Melee
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
