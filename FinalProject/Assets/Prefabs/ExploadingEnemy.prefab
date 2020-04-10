@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745b540217db5cf4a9f6a37c614b50f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 3869328953389575100, guid: ba9ee9545c5711a46974dc598530af2b, type: 3}
   speed: 1.5
-  player: {fileID: 0}
+  player: {fileID: 3869328953389575100, guid: ba9ee9545c5711a46974dc598530af2b, type: 3}
   NORMAL_SPEED: 1.5
   EXPLODING_SPEED: 0
 --- !u!114 &1976235174
