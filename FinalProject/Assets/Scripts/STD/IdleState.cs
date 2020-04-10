@@ -18,18 +18,21 @@ public class IdleState : EnemyStates
     }
     public override void StartChasing()
     {
-        
+        controller.currentState = controller.chasingState;
+        controller.currentState.Init();
     }
     public override void StopChasing()
     {
-        Debug.Log("currently not chasing the player");
+        //Debug.Log("currently not chasing the player");
     }
-    public override void Injured()
+    public override void Explode()
     {
+        controller.currentState = controller.explodingState;
+        controller.currentState.Init();
+    }
 
-    }
-    public override void Healed()
+    public override void Init()
     {
-        Debug.Log("not injured currently");
+        controller.speed = controller.NORMAL_SPEED;
     }
 }

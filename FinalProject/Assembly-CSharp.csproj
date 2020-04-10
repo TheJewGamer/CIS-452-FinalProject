@@ -55,8 +55,8 @@
      <Compile Include="Assets\Scripts\STD\ChasingState.cs" />
      <Compile Include="Assets\Scripts\STD\EnemyControllerSTD.cs" />
      <Compile Include="Assets\Scripts\STD\EnemyStates.cs" />
+     <Compile Include="Assets\Scripts\STD\ExplodingState.cs" />
      <Compile Include="Assets\Scripts\STD\IdleState.cs" />
-     <Compile Include="Assets\Scripts\STD\InjuredState.cs" />
      <Compile Include="Assets\Scripts\Stats.cs" />
      <Compile Include="Assets\Scripts\WinLoseMenuController.cs" />
  <Reference Include="Unity.Timeline.Editor">

@@ -71,6 +71,17 @@ public class PlayerController : MonoBehaviour
             leftCollider.SetActive(false);
         }
     }
+    
+    public void Attacked(int damage = 1)
+    {
+        health -= damage;
+
+        //check
+        if(health <= 0)
+        {
+            //dead
+        }
+    }
 
 
     //red flash effect

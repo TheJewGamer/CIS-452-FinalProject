@@ -11,6 +11,6 @@ public abstract class EnemyStates : MonoBehaviour
 {
     public abstract void StartChasing();
     public abstract void StopChasing();
-    public abstract void Injured();
-    public abstract void Healed();
+    public abstract void Explode();
+    public abstract void Init();
 }

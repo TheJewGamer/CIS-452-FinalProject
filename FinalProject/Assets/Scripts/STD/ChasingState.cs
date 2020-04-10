@@ -18,18 +18,21 @@ public class ChasingState : EnemyStates
     }
     public override void StartChasing()
     {
-        Debug.Log("Already chasing the player");
+        //Debug.Log("Already chasing the player");
     }
     public override void StopChasing()
     {
         controller.currentState = controller.idleState;
+        controller.currentState.Init();
     }
-    public override void Injured()
+    public override void Explode()
     {
-        controller.currentState = controller.injuredState;
+        controller.currentState = controller.explodingState;
+        controller.currentState.Init();
     }
-    public override void Healed()
+
+    public override void Init()
     {
-        Debug.Log("Not injured");
+        controller.target = controller.player;
     }
 }
