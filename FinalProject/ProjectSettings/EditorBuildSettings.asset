@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Tut.unity
     guid: 930d6b6246255224285017bb41cfb418
   - enabled: 1
-    path: Assets/Scenes/Overworld.unity
+    path: Assets/Scenes/SafeHouse.unity
     guid: 452639603056bf946a23495f901b8b86
   m_configObjects: {}
