@@ -26,15 +26,15 @@ public class EnemyFactory : MonoBehaviour
         Debug.Log("Creating " + type);
         enemyToSpawn = null;
 
-        if (type.Equals("ExplodingEnemy"))
-        {
-            enemyToSpawn = EnemyPrefab;
+       enemyToSpawn = ObjectPooler.instance.SpawnFromPool(type, Vector3.zero, Quaternion.identity);
 
-            if (enemyToSpawn.GetComponent<EnemyControllerSTD>() == null)
+            EnemyControllerSTD nullCheck = enemyToSpawn.GetComponent<EnemyControllerSTD>();
+
+            if (nullCheck == null)
             {
                 enemyToSpawn.AddComponent<EnemyControllerSTD>();
             }
-        }
+        
             return enemyToSpawn;
     }
 

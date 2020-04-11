@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factory: {fileID: 586584187}
-  type: 
+  type: ExplodingEnemy
   firerate: 4
 --- !u!114 &586584187
 MonoBehaviour:
@@ -167,8 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413aa018debbec042b538f3cb78c5cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 5695826719537635036, guid: 263e8fbf83900f7458627cab878ab7d5,
-    type: 3}
+  EnemyPrefab: {fileID: 0}
 --- !u!212 &586584188
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -265,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factory: {fileID: 1004658274}
-  type: 
+  type: ExplodingEnemy
   firerate: 4
 --- !u!114 &1004658274
 MonoBehaviour:
@@ -279,8 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413aa018debbec042b538f3cb78c5cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 5695826719537635036, guid: 263e8fbf83900f7458627cab878ab7d5,
-    type: 3}
+  EnemyPrefab: {fileID: 0}
 --- !u!212 &1004658275
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -377,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factory: {fileID: 1014080154}
-  type: 
+  type: ExplodingEnemy
   firerate: 4
 --- !u!114 &1014080154
 MonoBehaviour:
@@ -391,8 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413aa018debbec042b538f3cb78c5cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 5695826719537635036, guid: 263e8fbf83900f7458627cab878ab7d5,
-    type: 3}
+  EnemyPrefab: {fileID: 0}
 --- !u!212 &1014080155
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -572,7 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factory: {fileID: 1351323278}
-  type: 
+  type: ExplodingEnemy
   firerate: 4
 --- !u!114 &1351323278
 MonoBehaviour:
@@ -586,8 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413aa018debbec042b538f3cb78c5cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 5695826719537635036, guid: 263e8fbf83900f7458627cab878ab7d5,
-    type: 3}
+  EnemyPrefab: {fileID: 0}
 --- !u!212 &1351323279
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -652,6 +648,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1651632019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1651632020}
+  - component: {fileID: 1651632021}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1651632020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651632019}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.37643, y: -0.48902467, z: -5.6891975}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1651632021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651632019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd7fe600a0d94c309d06e84db21816f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: ExplodingEnemy
+    prefab: {fileID: 5695826719537635036, guid: 263e8fbf83900f7458627cab878ab7d5,
+      type: 3}
+    size: 50
 --- !u!1 &1705321952
 GameObject:
   m_ObjectHideFlags: 0

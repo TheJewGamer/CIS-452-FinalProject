@@ -35,7 +35,9 @@ public class EnemySpawner : MonoBehaviour
             nextFire = Time.time + firerate;
             type = "ExplodingEnemy";
             enemy = factory.CreateEnemy(type);
-            Instantiate(enemy, gameObject.transform.position, gameObject.transform.rotation); //put the object pooler here instead of the instantiation
+
+            enemy.transform.position = transform.position;
+           // Instantiate(enemy, gameObject.transform.position, gameObject.transform.rotation); //put the object pooler here instead of the instantiation
         }
     }
 
