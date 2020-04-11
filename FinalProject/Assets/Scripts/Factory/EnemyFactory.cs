@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour
 {
-    public GameObject EnemyPrefab;
+    //public GameObject EnemyPrefab;
 
     private GameObject enemyToSpawn;
 
