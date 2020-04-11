@@ -18,7 +18,7 @@ public class EnemyControllerSTD : MonoBehaviour
     public float NORMAL_SPEED = 2f;
     public float EXPLODING_SPEED = 0f;
     private const float DETECTION_DISTANCE = 3f;
-    private  float EXPLOADING_DAMAGE_RANGE = 1f;
+    private float EXPLOADING_DAMAGE_RANGE = 1f;
     private const float EXPLOADING_DISTANCE_ACTIVATION = .5f;
     private bool inRange;
 
