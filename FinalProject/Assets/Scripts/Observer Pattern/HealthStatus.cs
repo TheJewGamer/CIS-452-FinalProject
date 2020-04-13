@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthStatus : MonoBehaviour, ISubject
 {
@@ -67,5 +68,158 @@ public class HealthStatus : MonoBehaviour, ISubject
         companions.Add(companion);
 
         NotifyObservers();
+    }
+
+    public void ColorHealthCheck(Slider inputSlider)
+    {
+        //variable
+        ColorBlock cb = inputSlider.colors;
+
+        //check to see if dead
+        if(inputSlider.value <= 0)
+        {
+            //check to see if everyone is dead
+            Dead();
+        }
+
+        //color change/confirm
+        if(inputSlider.value > 7)
+        {
+            //set color to green
+            cb.disabledColor = Color.green;
+            inputSlider.colors = cb;
+        }
+        else if(inputSlider.value < 7 && inputSlider.value > 3)
+        {
+            //set color to yellow
+            cb.disabledColor = Color.yellow;
+            inputSlider.colors = cb;
+        }
+        else
+        {
+            //set color to red
+            cb.disabledColor = Color.red;
+            inputSlider.colors = cb;
+        }
+
+    }
+
+    public void AmmoAdded(Companion input)
+    {
+        //check to see if we have ammo
+        if(Stats.AmmoSuppliesCount > 0)
+        {
+            //which companion
+            if(input.companion1)
+            {
+                Stats.Companion1Ammo++;
+                Stats.AmmoSuppliesCount--;
+            }
+            else if(input.companion2)
+            {
+                Stats.Companion2Ammo++;
+                Stats.AmmoSuppliesCount--;
+            }
+            else if(input.companion3)
+            {
+                Stats.Companion3Ammo++;
+                Stats.AmmoSuppliesCount--;
+            }
+            else if(input.companion4)
+            {
+                Stats.Companion4Ammo++;
+                Stats.AmmoSuppliesCount--;
+            }
+            else
+            {
+                Debug.Log("Error on adding ammo");
+            }
+
+            //update observers
+            NotifyObservers();
+        }
+        else
+        {
+            //no ammo
+        }
+    }
+
+    public void AmmoSubtracted(Companion input)
+    {
+        //check to see if we have ammo
+        if(input.companion1)
+        {
+            Stats.Companion1Ammo--;
+            Stats.AmmoSuppliesCount++;
+        }
+        else if(input.companion2)
+        {
+            Stats.Companion2Ammo--;
+            Stats.AmmoSuppliesCount++;
+        }
+        else if(input.companion3)
+        {
+            Stats.Companion3Ammo--;
+            Stats.AmmoSuppliesCount++;
+        }
+        else if(input.companion4)
+        {
+            Stats.Companion4Ammo--;
+            Stats.AmmoSuppliesCount++;
+        }
+        else
+        {
+            Debug.Log("Error on adding ammo");
+        }
+
+        //update observers
+        NotifyObservers();
+    }
+
+    public void Healed(Companion input)
+    {
+        //check to see if we have medical
+        if(Stats.MedicalSuppliesCount > 0)
+        {
+            //which companion
+            if(input.companion1 && Stats.Companion1Health < 10 && !Stats.Companion1Dead)
+            {
+                Stats.Companion1Health++;
+                Stats.MedicalSuppliesCount--;
+            }
+            else if(input.companion2 && Stats.Companion2Health < 10 && !Stats.Companion2Dead)
+            {
+                Stats.Companion2Health++;
+                Stats.MedicalSuppliesCount--;
+            }
+            else if(input.companion3 && Stats.Companion3Health < 10 && !Stats.Companion3Dead)
+            {
+                Stats.Companion3Health++;
+                Stats.MedicalSuppliesCount--;
+            }
+            else if(input.companion4 && Stats.Companion4Health < 10 && !Stats.Companion4Dead)
+            {
+                Stats.Companion4Health++;
+                Stats.MedicalSuppliesCount--;
+            }
+            else
+            {
+                Debug.Log("Error on adding health");
+            }
+
+            //update observers
+            NotifyObservers();
+        }
+        else
+        {
+            //no ammo
+        }
+    }
+    private void Dead()
+    {
+        if(Stats.Companion1Health == 0 && Stats.Companion2Health == 0 && Stats.Companion3Health == 0 && Stats.Companion4Health == 0)
+        {
+            //game over
+        }
     }
 }

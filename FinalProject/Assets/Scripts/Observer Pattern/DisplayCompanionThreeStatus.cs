@@ -7,8 +7,9 @@ public class DisplayCompanionThreeStatus : MonoBehaviour, IObserver
 {
     public Companion companion;
     public HealthStatus healthStatus;
-
     private string statusToDisplay;
+    public Slider healthbar;
+    public Text ammoCount;
 
     // Start is called before the first frame update
     void Start()
@@ -26,5 +27,14 @@ public class DisplayCompanionThreeStatus : MonoBehaviour, IObserver
             this.statusToDisplay = "Companion 3 Status: " + companion.statusMessage; //companion.statusMessage;
         }
         gameObject.GetComponent<Text>().text = this.statusToDisplay;
+
+        //update healthbar
+        healthbar.value = Stats.Companion3Health;
+
+        //color
+        healthStatus.ColorHealthCheck(healthbar);
+
+        //ammo
+        ammoCount.text = Stats.Companion3Ammo.ToString();
     }
 }

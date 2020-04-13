@@ -48,7 +48,6 @@
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\Factory\EnemyFactory.cs" />
      <Compile Include="Assets\Scripts\Factory\EnemySpawner.cs" />
-     <Compile Include="Assets\Scripts\HudController.cs" />
      <Compile Include="Assets\Scripts\Menus\LevelLoader.cs" />
      <Compile Include="Assets\Scripts\Menus\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\NameSelectionController.cs" />
