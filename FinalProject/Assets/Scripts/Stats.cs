@@ -33,6 +33,8 @@ public static class Stats
     private static int medicalSuppliesCount = 0;
     private static int ammoSuppliesCount = 0;
     private static int fuelSuppliesCount = 0;
+    private static int runsLeft = 4;
+    private static int activeRunner = 0;
 
     public static string Companion1Name
     {
@@ -278,6 +280,30 @@ public static class Stats
         set
         {
             fuelSuppliesCount = value;
+        }
+    }
+
+    public static int RunsLeft
+    {
+        get
+        {
+            return runsLeft;
+        }
+        set
+        {
+            runsLeft = value;
+        }
+    }
+
+    public static int ActiveRunner
+    {
+        get
+        {
+            return activeRunner;
+        }
+        set
+        {
+            activeRunner = value;
         }
     }
 }

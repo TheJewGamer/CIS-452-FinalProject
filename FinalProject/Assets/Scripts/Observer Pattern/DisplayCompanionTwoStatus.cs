@@ -38,4 +38,24 @@ public class DisplayCompanionTwoStatus : MonoBehaviour, IObserver
         //ammo
         ammoCount.text = Stats.Companion2Ammo.ToString();
     }
+
+    public void Comp2AddAmmo()
+    {
+        healthStatus.AmmoAdded(companion);
+    }
+
+    public void Comp2SubtractAmmo()
+    {
+        healthStatus.AmmoSubtracted(companion);
+    }
+
+    public void Comp2Heal()
+    {
+        healthStatus.Healed(companion);
+    }
+
+    public void Comp2Runner()
+    {
+        healthStatus.SetRunner(companion);
+    }
 }

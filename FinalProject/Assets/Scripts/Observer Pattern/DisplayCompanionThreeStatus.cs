@@ -37,4 +37,24 @@ public class DisplayCompanionThreeStatus : MonoBehaviour, IObserver
         //ammo
         ammoCount.text = Stats.Companion3Ammo.ToString();
     }
+
+    public void Comp3AddAmmo()
+    {
+        healthStatus.AmmoAdded(companion);
+    }
+
+    public void Comp3SubtractAmmo()
+    {
+        healthStatus.AmmoSubtracted(companion);
+    }
+
+    public void Comp3Heal()
+    {
+        healthStatus.Healed(companion);
+    }
+
+    public void Comp3Runner()
+    {
+        healthStatus.SetRunner(companion);
+    }
 }

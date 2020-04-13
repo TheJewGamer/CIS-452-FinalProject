@@ -1,21 +1,21 @@
 ﻿/*
-    * Author: CJ Green
+    * Author: CJ Green, Jacob Cohen
     * Script: HealthStatus.cs
     * Assignment: Final Project
-    * Description: This script defines and fills out the subject that inherits from the ISubject interface
+    * Description: This script defines and fills out the subject that inherits from the ISubject interface. It also is the general manager for the Safehouse menu as it keeps track of the required information already 
 */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthStatus : MonoBehaviour, ISubject
 {
-
     private List<IObserver> observers = new List<IObserver>();
-
     public List<Companion> companions = new List<Companion>();
-
+    public GameObject escapeButton;
+    public LevelLoader loader;
 
     void Start()
     {
@@ -26,14 +26,15 @@ public class HealthStatus : MonoBehaviour, ISubject
             Debug.Log("This is observer: " + observer.ToString());
         }
 
-
-
         Debug.Log("The total amount of companions is: " + companions.Count);
 
         foreach (Companion companion in companions)
         {
             Debug.Log("This companion is: " + companion.ToString());
         }
+
+        //escape button
+        CanEscape();
     }
 
     public void RegisterObserver(IObserver observer)
@@ -212,9 +213,92 @@ public class HealthStatus : MonoBehaviour, ISubject
         }
         else
         {
-            //no ammo
+            //no health
+            Debug.Log("No health supplies");
         }
     }
+
+    public void AddFuel()
+    {
+        //check to make sure we have fuel
+        if(Stats.FuelSuppliesCount > 0)
+        {
+            //check to make sure car is not already full
+            if(Stats.CarFuel < 10)
+            {
+                //add fuel
+                Stats.CarFuel++;
+                Stats.FuelSuppliesCount--;
+            }
+
+            //update observers
+            NotifyObservers();
+
+            //check to see if we can escape
+            CanEscape();
+        }
+    }
+
+    private void CanEscape()
+    {
+        //check
+        if(Stats.CarFuel == 10)
+        {
+            escapeButton.SetActive(true);
+        }
+        else
+        {
+            escapeButton.SetActive(false);
+        }
+    }
+
+    public void Escape()
+    {
+        //win menu
+    }
+
+    public void startRun()
+    {
+        if(Stats.RunsLeft == 0)
+        {
+            //lose
+        }
+        else
+        {
+            //subtract run
+            Stats.RunsLeft--;
+
+            //load gameworld
+            loader.StartCoroutine("FadeToBlack", "Safehouse");
+        }
+    }
+
+    public void SetRunner(Companion input)
+    {
+        if(input.companion1)
+        {
+            Stats.ActiveRunner = 1;
+        }
+        else if(input.companion2)
+        {
+            Stats.ActiveRunner = 2;
+        }
+        else if(input.companion3)
+        {
+            Stats.ActiveRunner = 3;
+        }
+        else if(input.companion4)
+        {
+            Stats.ActiveRunner = 4;
+        }
+        else
+        {
+            Debug.Log("Error on setting active runner");
+        }
+
+        NotifyObservers();
+    }
+
     private void Dead()
     {
         if(Stats.Companion1Health == 0 && Stats.Companion2Health == 0 && Stats.Companion3Health == 0 && Stats.Companion4Health == 0)

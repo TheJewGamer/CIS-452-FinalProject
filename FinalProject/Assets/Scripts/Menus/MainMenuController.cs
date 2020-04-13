@@ -11,7 +11,6 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject mainMenu;
-    public GameObject versionMenu;
     public GameObject tutMenu;
 
     // Start is called before the first frame update
@@ -19,30 +18,11 @@ public class MainMenuController : MonoBehaviour
     {
         mainMenu.SetActive(true);
         tutMenu.SetActive(false);
-        versionMenu.SetActive(false);
     }
 
     public void StartPushed()
     {
         mainMenu.SetActive(false);
-        versionMenu.SetActive(true);
-    }
-
-    public void funnyVersion()
-    {
-        //set something maybe
-
-        //menus
-        versionMenu.SetActive(false);
-        tutMenu.SetActive(true);
-    }
-
-    public void normalVersion()
-    {
-        //set something maybe
-
-        //menus
-        versionMenu.SetActive(false);
         tutMenu.SetActive(true);
     }
 
@@ -53,7 +33,7 @@ public class MainMenuController : MonoBehaviour
 
     public void NoPushed()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("NameSelection");
     }
 
 

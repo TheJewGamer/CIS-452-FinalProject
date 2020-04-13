@@ -48,4 +48,14 @@ public class DisplayCompanionOneStatus : MonoBehaviour, IObserver
     {
         healthStatus.AmmoSubtracted(companion);
     }
+
+    public void Comp1Heal()
+    {
+        healthStatus.Healed(companion);
+    }
+
+    public void Comp1Runner()
+    {
+        healthStatus.SetRunner(companion);
+    }
 }

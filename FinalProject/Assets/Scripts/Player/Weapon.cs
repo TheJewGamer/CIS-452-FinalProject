@@ -18,9 +18,21 @@ public class Weapon : MonoBehaviour
     public Sprite muzzelFlash;
     private bool melee;
 
-    private void Start() 
+    private void Awake() 
     {
-        melee = false;    
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
+        melee = false;
+    }
+
+    void OnEnable() 
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
+        melee = false;
+    }
+
+    private void OnDisable() 
+    {
+        StopAllCoroutines();    
     }
 
     private void Update() 

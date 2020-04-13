@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public GameObject leftCollider;
     public Sprite rightLeftSprite;
     public Sprite upDownSprite;
+    public GameObject rightPistol;
+    public GameObject leftPistol;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
         //set up
         pickupCount = 0;
+        leftPistol.SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,6 +56,8 @@ public class PlayerController : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().sprite = upDownSprite;
             rightCollider.SetActive(true);
             leftCollider.SetActive(false);
+            rightPistol.SetActive(true);
+            leftPistol.SetActive(false);
         }
         else if(Input.mousePosition.x < (Screen.width / 2))
         {
@@ -61,6 +66,8 @@ public class PlayerController : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().sprite = rightLeftSprite;
             leftCollider.SetActive(true);
             rightCollider.SetActive(false);
+            rightPistol.SetActive(false);
+            leftPistol.SetActive(true);
         }
         else if(Input.mousePosition.x > (Screen.width / 2))
         {
@@ -69,6 +76,8 @@ public class PlayerController : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().sprite = rightLeftSprite;
             rightCollider.SetActive(true);
             leftCollider.SetActive(false);
+            rightPistol.SetActive(true);
+            leftPistol.SetActive(false);
         }
     }
     
