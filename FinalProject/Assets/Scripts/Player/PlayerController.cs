@@ -104,9 +104,63 @@ public class PlayerController : MonoBehaviour
         hitEffect.SetActive(false);
     }
 
-    public void PickUp()
+    private void OnTriggerEnter2D(Collider2D other) 
     {
-       //for future pickup stuff
+        //ammo pickup
+        if(other.gameObject.tag == "Ammo")
+        {
+            //space check
+            if(pickupCount < MAX_PICKUP_COUNT)
+            {
+                //add to hud
+
+                //inc pickup count
+                pickupCount++;
+
+                //destroy pickup
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                //prompt
+            }
+        }
+        else if(other.gameObject.tag == "Health")
+        {
+            //space check
+            if(pickupCount < MAX_PICKUP_COUNT)
+            {
+                //add to hud
+
+                //inc pickup count
+                pickupCount++;
+
+                //destroy pickup
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                //prompt
+            }
+        }
+        else if(other.gameObject.tag == "Gas")
+        {
+            //space check
+            if(pickupCount < MAX_PICKUP_COUNT)
+            {
+                //add to hud
+
+                //inc pickup count
+                pickupCount++;
+
+                //destroy pickup
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                //prompt
+            }
+        }
     }
 }
 
