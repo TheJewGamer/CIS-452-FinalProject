@@ -9,15 +9,14 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
     public HealthStatus healthStatus;
     public Slider healthbar;
     private string statusToDisplay;
+    public Text companionName;
     public Text ammoCount;
 
     // Start is called before the first frame update
     void Start()
     {
         this.statusToDisplay = GetComponent<Text>().text;
-
         healthStatus.RegisterObserver(this);
-
     }
 
     public void UpdateData(List<Companion> companions)
@@ -27,6 +26,8 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
         if (companion.companion4)
         {
             this.statusToDisplay = "Companion 4 Status: " + companion.statusMessage; //companion.statusMessage;
+            this.companionName.text = companion.companionName;
+
         }
         gameObject.GetComponent<Text>().text = this.statusToDisplay;
 

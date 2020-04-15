@@ -8,6 +8,7 @@ public class DisplayCompanionOneStatus : MonoBehaviour, IObserver
     public Companion companion;
     public HealthStatus healthStatus;
     private string statusToDisplay;
+    public Text companionName;
     public Slider healthbar;
     public Text ammoCount;
 
@@ -15,7 +16,6 @@ public class DisplayCompanionOneStatus : MonoBehaviour, IObserver
     void Start()
     {
         this.statusToDisplay = GetComponent<Text>().text;
-
         healthStatus.RegisterObserver(this);
     }
 
@@ -26,6 +26,7 @@ public class DisplayCompanionOneStatus : MonoBehaviour, IObserver
         if (companion.companion1)
         {
             this.statusToDisplay = "Companion 1 Status: " + companion.statusMessage; //companion.statusMessage;
+            this.companionName.text = companion.companionName;
         }
         gameObject.GetComponent<Text>().text = this.statusToDisplay;
 

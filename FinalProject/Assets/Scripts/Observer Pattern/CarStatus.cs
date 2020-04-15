@@ -7,11 +7,13 @@ public class CarStatus : MonoBehaviour, IObserver
 {
     public HealthStatus healthStatus;
     public Slider fuelbar;
+    public Text carName;
 
     // Start is called before the first frame update
     void Start()
     {
         healthStatus.RegisterObserver(this);
+        carName.text = Stats.CarName;
     }
 
     public void UpdateData(List<Companion> companions)

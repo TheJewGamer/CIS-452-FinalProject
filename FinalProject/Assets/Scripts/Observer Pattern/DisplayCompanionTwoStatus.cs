@@ -9,6 +9,7 @@ public class DisplayCompanionTwoStatus : MonoBehaviour, IObserver
     public HealthStatus healthStatus;
     private string statusToDisplay;
     public Slider healthbar;
+    public Text companionName;
     public Text ammoCount;
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class DisplayCompanionTwoStatus : MonoBehaviour, IObserver
         if (companion.companion2)
         {
             this.statusToDisplay = "Companion 2 Status: " + companion.statusMessage; //companion.statusMessage;
+            this.companionName.text = companion.companionName;
         }
         gameObject.GetComponent<Text>().text = this.statusToDisplay;
 

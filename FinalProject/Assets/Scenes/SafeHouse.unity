@@ -2115,6 +2115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthStatus: {fileID: 1726793935}
   fuelbar: {fileID: 1425918373}
+  carName: {fileID: 480304861}
 --- !u!1 &514852369
 GameObject:
   m_ObjectHideFlags: 0
@@ -4592,6 +4593,7 @@ MonoBehaviour:
   companion: {fileID: 427417393}
   healthStatus: {fileID: 1726793935}
   healthbar: {fileID: 1859848553}
+  companionName: {fileID: 1775061408}
   ammoCount: {fileID: 1408636851}
 --- !u!1 &1196804920
 GameObject:
@@ -5244,6 +5246,7 @@ MonoBehaviour:
   companion: {fileID: 617089248}
   healthStatus: {fileID: 1726793935}
   healthbar: {fileID: 326487231}
+  companionName: {fileID: 197511227}
   ammoCount: {fileID: 1547947154}
 --- !u!1 &1357837874
 GameObject:
@@ -6976,6 +6979,7 @@ MonoBehaviour:
   companion: {fileID: 753792062}
   healthStatus: {fileID: 1726793935}
   healthbar: {fileID: 368361630}
+  companionName: {fileID: 139440766}
   ammoCount: {fileID: 1938481143}
 --- !u!1 &1735527964
 GameObject:
@@ -8960,6 +8964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   companion: {fileID: 1203586620}
   healthStatus: {fileID: 1726793935}
+  companionName: {fileID: 443773439}
   healthbar: {fileID: 134106143}
   ammoCount: {fileID: 1803571212}
 --- !u!224 &2759857103095118358

@@ -37,45 +37,49 @@ public class Weapon : MonoBehaviour
 
     private void Update() 
     {
-        //look towards mouse
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-        transform.right= direction;
-
-        //shoot
-        if(Input.GetButtonDown("Shoot") == true && !melee)
+        //check to make sure menu is not open
+        if(this.gameObject.GetComponentInParent<PlayerController>().menuOpen == false)
         {
-            //feedback
-            StartCoroutine(Flash());
+            //look towards mouse
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+            transform.right= direction;
 
-            //raytrace
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction);
-
-            if(hit.collider !=null)
+            //shoot
+            if(Input.GetButtonDown("Shoot") == true && !melee)
             {
-                //enemy hit
-                if(hit.collider.CompareTag("Enemy"))
+                //feedback
+                StartCoroutine(Flash());
+
+                //raytrace
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction);
+
+                if(hit.collider !=null)
                 {
-                    //notify
-                    hit.transform.SendMessageUpwards("Attacked");
+                    //enemy hit
+                    if(hit.collider.CompareTag("Enemy"))
+                    {
+                        //notify
+                        hit.transform.SendMessageUpwards("Attacked");
+                    }
                 }
             }
-        }
-        else if(Input.GetButtonDown("Melee") == true)
-        {
-            //feedback
-            StartCoroutine(Knife());
-
-            //raytrace
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction, 2);
-
-            if(hit.collider !=null)
+            else if(Input.GetButtonDown("Melee") == true)
             {
-                //enemy hit
-                if(hit.collider.CompareTag("Enemy"))
+                //feedback
+                StartCoroutine(Knife());
+
+                //raytrace
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction, 2);
+
+                if(hit.collider !=null)
                 {
-                    //notify
-                    hit.transform.SendMessageUpwards("Attacked");
+                    //enemy hit
+                    if(hit.collider.CompareTag("Enemy"))
+                    {
+                        //notify
+                        hit.transform.SendMessageUpwards("Attacked");
+                    }
                 }
             }
         }
