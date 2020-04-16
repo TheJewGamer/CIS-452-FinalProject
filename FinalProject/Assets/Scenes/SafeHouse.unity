@@ -4947,6 +4947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthStatus: {fileID: 1726793935}
   runnerText: {fileID: 1860973236}
+  runsLeftText: {fileID: 954238042}
 --- !u!1 &1305019155
 GameObject:
   m_ObjectHideFlags: 0

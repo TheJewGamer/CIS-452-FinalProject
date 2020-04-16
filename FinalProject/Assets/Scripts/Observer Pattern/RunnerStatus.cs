@@ -7,6 +7,7 @@ public class RunnerStatus : MonoBehaviour, IObserver
 {
     public HealthStatus healthStatus;
     public Text runnerText;
+    public Text runsLeftText;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,9 @@ public class RunnerStatus : MonoBehaviour, IObserver
 
     public void UpdateData(List<Companion> companions)
     {
+        //runs left
+        runsLeftText.text = Stats.RunsLeft.ToString();
+
         //update active runner
         switch (Stats.ActiveRunner)
         {

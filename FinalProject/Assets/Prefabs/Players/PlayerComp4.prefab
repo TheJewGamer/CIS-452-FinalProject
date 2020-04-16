@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &354141161
 Transform:
   m_ObjectHideFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354141158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0624, y: -0.0653, z: 0}
+  m_LocalPosition: {x: -0.0624, y: 0.0082, z: 0}
   m_LocalScale: {x: 0.552575, y: 0.552575, z: 0.552575}
   m_Children: []
   m_Father: {fileID: 3869328953389575100}
@@ -97,6 +97,8 @@ MonoBehaviour:
   pistol: {fileID: 21300000, guid: cec13784c692c0e4f84bacd0e2634385, type: 3}
   knife: {fileID: 21300000, guid: b7abb247a9e3653428e96c906725f194, type: 3}
   muzzelFlash: {fileID: 21300000, guid: 41ed89f1ad61ed24da98eecbc129754f, type: 3}
+  ammoText: {fileID: 0}
+  emptyText: {fileID: 0}
 --- !u!1 &3869328952641951209
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +143,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.016960137, y: -0.014133453}
+  m_Offset: {x: 0.040023655, y: 0.024610586}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -152,7 +154,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15877531, y: 0.2345308}
+  m_Size: {x: 0.13817376, y: 0.20627044}
   m_EdgeRadius: 0
 --- !u!1 &3869328952734942160
 GameObject:
@@ -198,7 +200,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.022048265, y: -0.013568103}
+  m_Offset: {x: -0.039824903, y: 0.025631763}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -209,7 +211,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16216722, y: 0.22887743}
+  m_Size: {x: 0.14119995, y: 0.20699851}
   m_EdgeRadius: 0
 --- !u!1 &3869328953321104067
 GameObject:
@@ -237,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869328953321104067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0892, y: -0.0653, z: 0}
+  m_LocalPosition: {x: 0.0491, y: -0.0215, z: 0}
   m_LocalScale: {x: 0.552575, y: 0.552575, z: 0.552575}
   m_Children: []
   m_Father: {fileID: 3869328953389575100}
@@ -308,6 +310,8 @@ MonoBehaviour:
   pistol: {fileID: 21300000, guid: cec13784c692c0e4f84bacd0e2634385, type: 3}
   knife: {fileID: 21300000, guid: b7abb247a9e3653428e96c906725f194, type: 3}
   muzzelFlash: {fileID: 21300000, guid: 41ed89f1ad61ed24da98eecbc129754f, type: 3}
+  ammoText: {fileID: 0}
+  emptyText: {fileID: 0}
 --- !u!1 &3869328953389575098
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +326,7 @@ GameObject:
   - component: {fileID: 3869328953389575103}
   - component: {fileID: 3869328953389575088}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerComp4
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,9 +389,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fa85c1439b5d2e9469ba3e6f72eeb788, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3816b33689e43484c8d94ae2fa4eb80a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.5, y: 0.5}
@@ -449,10 +453,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 0}
+  healthbar: {fileID: 0}
   rightCollider: {fileID: 3869328952734942160}
   leftCollider: {fileID: 3869328952641951209}
-  rightLeftSprite: {fileID: 21300000, guid: fa85c1439b5d2e9469ba3e6f72eeb788, type: 3}
-  upDownSprite: {fileID: 21300000, guid: 96595f3fa7ba47149a61e17983a0d6d8, type: 3}
+  rightLeftSprite: {fileID: 21300000, guid: 3816b33689e43484c8d94ae2fa4eb80a, type: 3}
+  upDownSprite: {fileID: 21300000, guid: bb905e731abb9434f9bd7e234393afaa, type: 3}
   rightPistol: {fileID: 3869328953321104067}
   leftPistol: {fileID: 354141158}
   menuOpen: 0

@@ -33,6 +33,9 @@ public class HealthStatus : MonoBehaviour, ISubject
             Debug.Log("This companion is: " + companion.ToString());
         }
 
+        //runs left
+        
+
         //escape button
         CanEscape();
     }
@@ -263,7 +266,7 @@ public class HealthStatus : MonoBehaviour, ISubject
         {
             //lose
         }
-        else
+        else if(Stats.ActiveRunner != 0)
         {
             //subtract run
             Stats.RunsLeft--;

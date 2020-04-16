@@ -18,16 +18,16 @@ public class PlayerController : MonoBehaviour
     private float health;
     private float speed = 3f;
     public GameObject hitEffect;
-    private int medicalSupplyCount;
-    private int fuelSupplyCount;
-    private int ammoSupplyCount;
-    private int totalPickUpCount;
+    private static int medicalSupplyCount;
+    private static int fuelSupplyCount;
+    private static int ammoSupplyCount;
+    private static int totalPickUpCount;
     private const int MAX_PICKUP_COUNT = 5;
     public Slider healthbar;
     public GameObject rightCollider;
     public GameObject leftCollider;
-    private Sprite rightLeftSprite;
-    private Sprite upDownSprite;
+    public Sprite rightLeftSprite;
+    public Sprite upDownSprite;
     public GameObject rightPistol;
     public GameObject leftPistol;
     public bool menuOpen;
@@ -52,19 +52,6 @@ public class PlayerController : MonoBehaviour
     public GameObject fuelImage3;
     public GameObject fuelImage4;
     public GameObject fuelImage5;
-
-    //sprites
-    public Sprite Comp1RightSprite;
-    public Sprite Comp1UpSprite;
-
-    public Sprite Comp2RightSprite;
-    public Sprite Comp2UpSprite;
-
-    public Sprite Comp3RightSprite;
-    public Sprite Comp3UpSprite;
-
-    public Sprite Comp4RightSprite;
-    public Sprite Comp4UpSprite;
 
 
     // Start is called before the first frame update
@@ -101,41 +88,31 @@ public class PlayerController : MonoBehaviour
         fuelImage4.SetActive(false);
         fuelImage5.SetActive(false);
 
-        //set sprite and health
+        //get active runner and set health
         switch (Stats.ActiveRunner)
         {
             //comp 1
             case 1:
-                rightLeftSprite = Comp1RightSprite;
-                upDownSprite = Comp1UpSprite;
                 health = Stats.Companion1Health;
                 break;
 
             //comp 2
             case 2:
-                rightLeftSprite = Comp2RightSprite;
-                upDownSprite = Comp2UpSprite;
                 health = Stats.Companion2Health;
                 break;
 
             //comp 3
             case 3:
-                rightLeftSprite = Comp3RightSprite;
-                upDownSprite = Comp3UpSprite;
                 health = Stats.Companion3Health;
                 break;
             
             //comp 4
             case 4:
-                rightLeftSprite = Comp4RightSprite;
-                upDownSprite = Comp4UpSprite;
                 health = Stats.Companion4Health;
                 break;
-
-            //testing
+                
+                //testing
             default:
-                rightLeftSprite = Comp1RightSprite;
-                upDownSprite = Comp1UpSprite;
                 health = Stats.Companion1Health;
                 break;
         }
@@ -455,7 +432,6 @@ public class PlayerController : MonoBehaviour
         //update healthbar
         healthbar.value = health;
 
-        //check color
         //variable
         ColorBlock cb = healthbar.colors;
 
@@ -512,31 +488,33 @@ public class PlayerController : MonoBehaviour
             case 1:
                 Stats.Companion1Dead = dead;
                 Stats.Companion1Health = health;
-                Stats.Companion1Ammo = this.gameObject.GetComponentInChildren<Weapon>().ammo;
+                Stats.Companion1Ammo = Weapon.Ammo;
                 break;
 
             //comp 2
             case 2:
                 Stats.Companion2Dead = dead;
                 Stats.Companion2Health = health;
-                Stats.Companion2Ammo = this.gameObject.GetComponentInChildren<Weapon>().ammo;
+                Stats.Companion2Ammo = Weapon.Ammo;
                 break;
 
             //comp 3
             case 3:
                 Stats.Companion3Dead = dead;
                 Stats.Companion3Health = health;
-                Stats.Companion3Ammo = this.gameObject.GetComponentInChildren<Weapon>().ammo;
+                Stats.Companion3Ammo = Weapon.Ammo;
                 break;
             
             //comp 4
             case 4:
                 Stats.Companion4Dead = dead;
                 Stats.Companion4Health = health;
-                Stats.Companion4Ammo = this.gameObject.GetComponentInChildren<Weapon>().ammo;
+                Stats.Companion4Ammo = Weapon.Ammo;
                 break;
 
         }
+
+        //exit back to safehouse
     }
 
 }

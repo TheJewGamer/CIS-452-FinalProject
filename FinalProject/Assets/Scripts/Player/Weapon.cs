@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -16,13 +17,16 @@ public class Weapon : MonoBehaviour
     public Sprite pistol;
     public Sprite knife;
     public Sprite muzzelFlash;
+    public Text ammoText;
     private bool melee;
-    public int ammo;
+    public static int ammo;
+    public GameObject emptyText;
 
     private void Start() 
     {
         this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
         melee = false;
+        emptyText.SetActive(false);
 
         //get active runner and set ammo
         switch (Stats.ActiveRunner)
@@ -47,13 +51,21 @@ public class Weapon : MonoBehaviour
                 ammo = Stats.Companion4Ammo;
                 break;
 
+            //testing
+                default:
+                    ammo = Stats.Companion1Ammo;
+                    break;
         }
+
+        //hud update
+        ammoText.text = ammo.ToString();
     }
 
     void OnEnable() 
     {
         this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
         melee = false;
+        emptyText.SetActive(false);
     }
 
     private void OnDisable() 
@@ -84,6 +96,7 @@ public class Weapon : MonoBehaviour
                     ammo--;
 
                     //update hud
+                    ammoText.text = ammo.ToString();
 
                     //raytrace
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction);
@@ -101,6 +114,7 @@ public class Weapon : MonoBehaviour
                 else
                 {
                     //no ammo prompt
+                    StartCoroutine(Empty());
                 }
                 
             }
@@ -138,6 +152,18 @@ public class Weapon : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
     }
 
+     private IEnumerator Empty()
+    {
+        //enable
+        emptyText.SetActive(true);
+
+        //wait
+        yield return new WaitForSeconds(.1f);
+
+        //turn off
+        emptyText.SetActive(false);
+    }
+
     private IEnumerator Knife()
     {
         //enable
@@ -150,5 +176,17 @@ public class Weapon : MonoBehaviour
         //revert
         melee = false;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
+    }
+
+    public static int Ammo
+    {
+        get
+        {
+            return ammo;
+        }
+        set
+        {
+            ammo = value;
+        }
     }
 }

@@ -20,10 +20,10 @@ public static class Stats
     private static float companion4Health = 10;
     private static float carFuel = 0;
 
-    private static int companion1Ammo = 0;
-    private static int companion2Ammo = 0;
-    private static int companion3Ammo = 0;
-    private static int companion4Ammo = 0;
+    private static int companion1Ammo = 50;
+    private static int companion2Ammo = 50;
+    private static int companion3Ammo = 50;
+    private static int companion4Ammo = 50;
 
     private static bool companion1Dead = false;
     private static bool companion2Dead = false;
