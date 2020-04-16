@@ -17,7 +17,7 @@ public class HealthStatus : MonoBehaviour, ISubject
     public GameObject escapeButton;
     public LevelLoader loader;
 
-    void Start()
+    private void Start()
     {
         Debug.Log("The total amount of observers is: " + observers.Count);
 

@@ -1,3 +1,10 @@
+/*
+    * Author: Jacob Cohen
+    * Script: SuppliesText.cs
+    * Assignment: Final Project
+    * Description: Controls the supplies display
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +18,7 @@ public class SuppliesText : MonoBehaviour, IObserver
     public Text gasCount;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         healthStatus.RegisterObserver(this);
     }

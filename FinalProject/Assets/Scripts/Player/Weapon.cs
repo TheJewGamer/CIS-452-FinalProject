@@ -2,7 +2,7 @@
     * Jacob Cohen
     * Weapon.cs
     * Final Project
-    * controls the weapons
+    * controls the weapon
 */
 
 using System.Collections;

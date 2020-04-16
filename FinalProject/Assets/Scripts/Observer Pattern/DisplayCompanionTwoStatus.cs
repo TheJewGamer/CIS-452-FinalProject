@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+    * Author: CJ Green, Jacob Cohen
+    * Script: DisplayCompanionTwoStatus.cs
+    * Assignment: Final Project
+    * Description: Controls companion 2 stats display
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +20,7 @@ public class DisplayCompanionTwoStatus : MonoBehaviour, IObserver
     public Text ammoCount;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         this.statusToDisplay = GetComponent<Text>().text;
 

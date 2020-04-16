@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+    * Author: CJ Green, Jacob Cohen
+    * Script: DisplayCompanionFourStatus.cs
+    * Assignment: Final Project
+    * Description: Controls companion 4 stats display
+*/
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +21,7 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
     public Text ammoCount;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         this.statusToDisplay = GetComponent<Text>().text;
         healthStatus.RegisterObserver(this);

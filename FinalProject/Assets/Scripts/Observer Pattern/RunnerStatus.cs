@@ -1,3 +1,10 @@
+/*
+    * Author: Jacob Cohen
+    * Script: RunnerStatus.cs
+    * Assignment: Final Project
+    * Description: Controls Runner display
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +17,7 @@ public class RunnerStatus : MonoBehaviour, IObserver
     public Text runsLeftText;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         healthStatus.RegisterObserver(this);
     }

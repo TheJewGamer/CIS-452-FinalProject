@@ -22,7 +22,7 @@ public class Companion : MonoBehaviour
     public HealthStatus healthStatus;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
 
         healthStatus.AddCompanions(this);

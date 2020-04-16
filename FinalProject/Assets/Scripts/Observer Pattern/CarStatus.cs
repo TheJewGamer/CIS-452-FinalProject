@@ -1,3 +1,10 @@
+/*
+    * Author: Jacob Cohen
+    * Script: IObserver.cs
+    * Assignment: Final Project
+    * Description: This script controls the display of car stats
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +17,7 @@ public class CarStatus : MonoBehaviour, IObserver
     public Text carName;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         healthStatus.RegisterObserver(this);
         carName.text = Stats.CarName;
