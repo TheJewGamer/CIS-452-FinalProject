@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     //variables
     private Vector2  movement;
     private Rigidbody2D rb2d;
-    private int health = 5;
+    private float health;
     private float speed = 3f;
     public GameObject hitEffect;
     private int medicalSupplyCount;
@@ -23,10 +23,11 @@ public class PlayerController : MonoBehaviour
     private int ammoSupplyCount;
     private int totalPickUpCount;
     private const int MAX_PICKUP_COUNT = 5;
+    public Slider healthbar;
     public GameObject rightCollider;
     public GameObject leftCollider;
-    public Sprite rightLeftSprite;
-    public Sprite upDownSprite;
+    private Sprite rightLeftSprite;
+    private Sprite upDownSprite;
     public GameObject rightPistol;
     public GameObject leftPistol;
     public bool menuOpen;
@@ -51,6 +52,20 @@ public class PlayerController : MonoBehaviour
     public GameObject fuelImage3;
     public GameObject fuelImage4;
     public GameObject fuelImage5;
+
+    //sprites
+    public Sprite Comp1RightSprite;
+    public Sprite Comp1UpSprite;
+
+    public Sprite Comp2RightSprite;
+    public Sprite Comp2UpSprite;
+
+    public Sprite Comp3RightSprite;
+    public Sprite Comp3UpSprite;
+
+    public Sprite Comp4RightSprite;
+    public Sprite Comp4UpSprite;
+
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +100,48 @@ public class PlayerController : MonoBehaviour
         fuelImage3.SetActive(false);
         fuelImage4.SetActive(false);
         fuelImage5.SetActive(false);
+
+        //set sprite and health
+        switch (Stats.ActiveRunner)
+        {
+            //comp 1
+            case 1:
+                rightLeftSprite = Comp1RightSprite;
+                upDownSprite = Comp1UpSprite;
+                health = Stats.Companion1Health;
+                break;
+
+            //comp 2
+            case 2:
+                rightLeftSprite = Comp2RightSprite;
+                upDownSprite = Comp2UpSprite;
+                health = Stats.Companion2Health;
+                break;
+
+            //comp 3
+            case 3:
+                rightLeftSprite = Comp3RightSprite;
+                upDownSprite = Comp3UpSprite;
+                health = Stats.Companion3Health;
+                break;
+            
+            //comp 4
+            case 4:
+                rightLeftSprite = Comp4RightSprite;
+                upDownSprite = Comp4UpSprite;
+                health = Stats.Companion4Health;
+                break;
+
+            //testing
+            default:
+                rightLeftSprite = Comp1RightSprite;
+                upDownSprite = Comp1UpSprite;
+                health = Stats.Companion1Health;
+                break;
+        }
+
+        //call
+        UpdateHealthBar();
     }
 
     // Update is called once per frame
@@ -390,6 +447,95 @@ public class PlayerController : MonoBehaviour
             default:
                 Debug.Log("No ammo supplies in inventory");
                 break;
+        }
+    }
+
+    private void UpdateHealthBar()
+    {
+        //update healthbar
+        healthbar.value = health;
+
+        //check color
+        //variable
+        ColorBlock cb = healthbar.colors;
+
+        //check to see if dead
+        if(healthbar.value <= 0)
+        {
+            //call
+            EndRun();
+        }
+
+        //color change/confirm
+        if(healthbar.value > 7)
+        {
+            //set color to green
+            cb.disabledColor = Color.green;
+            healthbar.colors = cb;
+        }
+        else if(healthbar.value < 7 && healthbar.value > 3)
+        {
+            //set color to yellow
+            cb.disabledColor = Color.yellow;
+            healthbar.colors = cb;
+        }
+        else
+        {
+            //set color to red
+            cb.disabledColor = Color.red;
+            healthbar.colors = cb;
+        }
+    }
+
+    private void EndRun()
+    {
+        //var
+        bool dead = false;
+
+        //check to see if dead
+        if(health == 0)
+        {
+            dead = true;
+        }
+        else
+        {
+            //save supplies
+            Stats.FuelSuppliesCount += fuelSupplyCount;
+            Stats.MedicalSuppliesCount += medicalSupplyCount;
+            Stats.AmmoSuppliesCount += ammoSupplyCount;
+        }
+
+        //save player stats
+        switch (Stats.ActiveRunner)
+        {
+            //comp 1
+            case 1:
+                Stats.Companion1Dead = dead;
+                Stats.Companion1Health = health;
+                Stats.Companion1Ammo = this.gameObject.GetComponentInChildren<Weapon>().ammo;
+                break;
+
+            //comp 2
+            case 2:
+                Stats.Companion2Dead = dead;
+                Stats.Companion2Health = health;
+                Stats.Companion2Ammo = this.gameObject.GetComponentInChildren<Weapon>().ammo;
+                break;
+
+            //comp 3
+            case 3:
+                Stats.Companion3Dead = dead;
+                Stats.Companion3Health = health;
+                Stats.Companion3Ammo = this.gameObject.GetComponentInChildren<Weapon>().ammo;
+                break;
+            
+            //comp 4
+            case 4:
+                Stats.Companion4Dead = dead;
+                Stats.Companion4Health = health;
+                Stats.Companion4Ammo = this.gameObject.GetComponentInChildren<Weapon>().ammo;
+                break;
+
         }
     }
 

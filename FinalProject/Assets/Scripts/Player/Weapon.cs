@@ -17,11 +17,37 @@ public class Weapon : MonoBehaviour
     public Sprite knife;
     public Sprite muzzelFlash;
     private bool melee;
+    public int ammo;
 
-    private void Awake() 
+    private void Start() 
     {
         this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
         melee = false;
+
+        //get active runner and set ammo
+        switch (Stats.ActiveRunner)
+        {
+            //comp 1
+            case 1:
+                ammo = Stats.Companion1Ammo;
+                break;
+
+            //comp 2
+            case 2:
+                ammo = Stats.Companion2Ammo;
+                break;
+
+            //comp 3
+            case 3:
+                ammo = Stats.Companion3Ammo;
+                break;
+            
+            //comp 4
+            case 4:
+                ammo = Stats.Companion4Ammo;
+                break;
+
+        }
     }
 
     void OnEnable() 
@@ -48,21 +74,35 @@ public class Weapon : MonoBehaviour
             //shoot
             if(Input.GetButtonDown("Shoot") == true && !melee)
             {
-                //feedback
-                StartCoroutine(Flash());
-
-                //raytrace
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction);
-
-                if(hit.collider !=null)
+                //check to make sure we have ammo
+                if(ammo > 0)
                 {
-                    //enemy hit
-                    if(hit.collider.CompareTag("Enemy"))
+                    //feedback
+                    StartCoroutine(Flash());
+
+                    //dec ammo
+                    ammo--;
+
+                    //update hud
+
+                    //raytrace
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction);
+
+                    if(hit.collider !=null)
                     {
-                        //notify
-                        hit.transform.SendMessageUpwards("Attacked");
+                        //enemy hit
+                        if(hit.collider.CompareTag("Enemy"))
+                        {
+                            //notify
+                            hit.transform.SendMessageUpwards("Attacked");
+                        }
                     }
                 }
+                else
+                {
+                    //no ammo prompt
+                }
+                
             }
             else if(Input.GetButtonDown("Melee") == true)
             {

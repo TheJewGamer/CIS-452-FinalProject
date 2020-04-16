@@ -269,7 +269,7 @@ public class HealthStatus : MonoBehaviour, ISubject
             Stats.RunsLeft--;
 
             //load gameworld
-            loader.StartCoroutine("FadeToBlack", "Safehouse");
+            loader.StartCoroutine("FadeToBlack", "GameWorld");
         }
     }
 
