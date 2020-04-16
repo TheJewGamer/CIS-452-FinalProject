@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+    * Jacob Cohen
+    * NameSelectionController.cs
+    * Final Project
+    * General controller for the name selector level/menu
+*/
+
+
+using UnityEngine;
 using UnityEngine.UI;
 
 public class NameSelectionController : MonoBehaviour

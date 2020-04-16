@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+    * Jacob Cohen
+    * GameWorldManager.cs
+    * Final Project
+    * General controller for the game world
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +17,8 @@ public class GameWorldManager : MonoBehaviour
     public GameObject comp3;
     public GameObject comp4;
     private PlayerController controller;
+    public Collider2D safehouse;
+    public GameObject safeHouseMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +28,9 @@ public class GameWorldManager : MonoBehaviour
         comp2.SetActive(false);
         comp3.SetActive(false);
         comp4.SetActive(false);
+
+        //turn off menu
+        safeHouseMenu.SetActive(false);
 
         //get player to activate
         switch(Stats.ActiveRunner)
@@ -67,5 +79,20 @@ public class GameWorldManager : MonoBehaviour
     public void AmmoDropButton()
     {
         controller.AmmoDrop();
+    }
+
+    public void EndRunButton()
+    {
+        //done
+        controller.EndRun();
+    }
+
+    public void StayOut()
+    {
+        //set menu is open
+        controller.menuOpen = false;
+
+        //open menu
+        safeHouseMenu.SetActive(false);
     }
 }

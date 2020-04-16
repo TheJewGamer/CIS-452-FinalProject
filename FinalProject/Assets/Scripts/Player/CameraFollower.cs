@@ -17,7 +17,6 @@ public class CameraFollower : MonoBehaviour
     public GameObject comp3;
     public GameObject comp4;
     private GameObject player;
-
     private Vector3 offset;
 
     // Start is called before the first frame update

@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     //menu variables
     public GameObject inventoryMenu;
+    public GameObject safeHouseMenu;
 
     public GameObject ammoImage1;
     public GameObject ammoImage2;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fuelImage3;
     public GameObject fuelImage4;
     public GameObject fuelImage5;
+    public LevelLoader loader;
 
 
     // Start is called before the first frame update
@@ -168,7 +170,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //open/close menu
-        if(Input.GetKeyDown(KeyCode.Tab) == true)
+        if(Input.GetKeyDown(KeyCode.Tab) == true && !safeHouseMenu.activeSelf)
         {
             //open
             if(!menuOpen)
@@ -194,6 +196,8 @@ public class PlayerController : MonoBehaviour
     public void Attacked(int damage = 1)
     {
         health -= damage;
+
+        StartCoroutine(hitFlash());
 
         //check
         if(health <= 0)
@@ -337,6 +341,14 @@ public class PlayerController : MonoBehaviour
                 //prompt
             }
         }
+        else if(other.gameObject.tag == "Safehouse")
+        {
+            //set menu is open
+            menuOpen = true;
+
+            //open menu
+            safeHouseMenu.SetActive(true);
+        }
     }
 
     public void MedicalDrop()
@@ -463,7 +475,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void EndRun()
+    public void EndRun()
     {
         //var
         bool dead = false;
@@ -515,6 +527,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //exit back to safehouse
+        loader.StartCoroutine("FadeToBlack", "Safehouse");
     }
 
 }
