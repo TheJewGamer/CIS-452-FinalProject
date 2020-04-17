@@ -54,6 +54,14 @@
      <Compile Include="Assets\Scripts\NameSelectionController.cs" />
      <Compile Include="Assets\Scripts\ObjectPooler\ObjectPooler.cs" />
      <Compile Include="Assets\Scripts\ObjectPooler\Pool.cs" />
+     <Compile Include="Assets\Scripts\Observer Pattern\Companion.cs" />
+     <Compile Include="Assets\Scripts\Observer Pattern\DisplayCompanionFourStatus.cs" />
+     <Compile Include="Assets\Scripts\Observer Pattern\DisplayCompanionOneStatus.cs" />
+     <Compile Include="Assets\Scripts\Observer Pattern\DisplayCompanionThreeStatus.cs" />
+     <Compile Include="Assets\Scripts\Observer Pattern\DisplayCompanionTwoStatus.cs" />
+     <Compile Include="Assets\Scripts\Observer Pattern\HealthStatus.cs" />
+     <Compile Include="Assets\Scripts\Observer Pattern\IObserver.cs" />
+     <Compile Include="Assets\Scripts\Observer Pattern\ISubject.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\Weapon.cs" />
      <Compile Include="Assets\Scripts\STD\ChasingState.cs" />
