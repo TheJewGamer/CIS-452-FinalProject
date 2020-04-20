@@ -4595,6 +4595,10 @@ MonoBehaviour:
   healthbar: {fileID: 1859848553}
   companionName: {fileID: 1775061408}
   ammoCount: {fileID: 1408636851}
+  objectsToHide:
+  - {fileID: 901715259}
+  - {fileID: 1621373172}
+  - {fileID: 79306046}
 --- !u!1 &1196804920
 GameObject:
   m_ObjectHideFlags: 0
@@ -5249,6 +5253,10 @@ MonoBehaviour:
   healthbar: {fileID: 326487231}
   companionName: {fileID: 197511227}
   ammoCount: {fileID: 1547947154}
+  objectsToHide:
+  - {fileID: 1953407712}
+  - {fileID: 1739053544}
+  - {fileID: 1208967256}
 --- !u!1 &1357837874
 GameObject:
   m_ObjectHideFlags: 0
@@ -6982,6 +6990,10 @@ MonoBehaviour:
   healthbar: {fileID: 368361630}
   companionName: {fileID: 139440766}
   ammoCount: {fileID: 1938481143}
+  objectsToHide:
+  - {fileID: 1860386508}
+  - {fileID: 1699574513}
+  - {fileID: 88894362}
 --- !u!1 &1735527964
 GameObject:
   m_ObjectHideFlags: 0
@@ -8968,6 +8980,10 @@ MonoBehaviour:
   companionName: {fileID: 443773439}
   healthbar: {fileID: 134106143}
   ammoCount: {fileID: 1803571212}
+  objectsToHide:
+  - {fileID: 840413646}
+  - {fileID: 1590448399}
+  - {fileID: 1739701657}
 --- !u!224 &2759857103095118358
 RectTransform:
   m_ObjectHideFlags: 0

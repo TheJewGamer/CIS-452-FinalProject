@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fuelImage4;
     public GameObject fuelImage5;
     public LevelLoader loader;
+    public Text inventoryCountText;
 
 
     // Start is called before the first frame update
@@ -133,9 +134,13 @@ public class PlayerController : MonoBehaviour
         //make sure menu is not open
         if(!menuOpen)
         {
-            //actually moving player here
-            rb2d.MovePosition(rb2d.position + movement * speed * Time.fixedDeltaTime);
-
+            //make sure not dead
+            if(health > 0)
+            {
+                //actually moving player here
+                rb2d.MovePosition(rb2d.position + movement * speed * Time.fixedDeltaTime);
+            }
+            
             //sprite direction anim
             if(Input.mousePosition.y > (Screen.width / 2))
             {
@@ -202,7 +207,8 @@ public class PlayerController : MonoBehaviour
         //check
         if(health <= 0)
         {
-            //dead
+            //back to safehouse
+            EndRun();
         }
     }
 
@@ -255,10 +261,9 @@ public class PlayerController : MonoBehaviour
 
                 //destroy pickup
                 Destroy(other.gameObject);
-            }
-            else
-            {
-                //prompt
+
+                //update text
+                inventoryCountText.text = totalPickUpCount.ToString();
             }
         }
         else if(other.gameObject.tag == "Health")
@@ -295,10 +300,9 @@ public class PlayerController : MonoBehaviour
 
                 //destroy pickup
                 Destroy(other.gameObject);
-            }
-            else
-            {
-                //prompt
+
+                //update text
+                inventoryCountText.text = totalPickUpCount.ToString();
             }
         }
         else if(other.gameObject.tag == "Gas")
@@ -335,10 +339,9 @@ public class PlayerController : MonoBehaviour
 
                 //destroy pickup
                 Destroy(other.gameObject);
-            }
-            else
-            {
-                //prompt
+
+                //update text
+                inventoryCountText.text = totalPickUpCount.ToString();
             }
         }
         else if(other.gameObject.tag == "Safehouse")
@@ -358,23 +361,36 @@ public class PlayerController : MonoBehaviour
         {
             case 1:
                 healthImage1.SetActive(false);
+                medicalSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 2:
                 healthImage2.SetActive(false);
+                medicalSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 3:
                 healthImage3.SetActive(false);
+                medicalSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 4:
                 healthImage4.SetActive(false);
+                medicalSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 5:
                 healthImage5.SetActive(false);
+                medicalSupplyCount--;
+                totalPickUpCount--;
                 break;
             default:
                 Debug.Log("No medical supplies in inventory");
                 break;
         }
+
+        //update text
+        inventoryCountText.text = totalPickUpCount.ToString();
     }
 
     public void FuelDrop()
@@ -385,27 +401,35 @@ public class PlayerController : MonoBehaviour
             case 1:
                 fuelImage1.SetActive(false);
                 fuelSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 2:
                 fuelImage2.SetActive(false);
                 fuelSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 3:
                 fuelImage3.SetActive(false);
                 fuelSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 4:
                 fuelImage4.SetActive(false);
                 fuelSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 5:
                 fuelImage5.SetActive(false);
                 fuelSupplyCount--;
+                totalPickUpCount--;
                 break;
             default:
                 Debug.Log("No fuel supplies in inventory");
                 break;
         }
+
+        //update text
+        inventoryCountText.text = totalPickUpCount.ToString();
     }
 
     public void AmmoDrop()
@@ -416,27 +440,35 @@ public class PlayerController : MonoBehaviour
             case 1:
                 ammoImage1.SetActive(false);
                 ammoSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 2:
                 ammoImage2.SetActive(false);
                 ammoSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 3:
                 ammoImage3.SetActive(false);
                 ammoSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 4:
                 ammoImage4.SetActive(false);
                 ammoSupplyCount--;
+                totalPickUpCount--;
                 break;
             case 5:
                 ammoImage5.SetActive(false);
                 ammoSupplyCount--;
+                totalPickUpCount--;
                 break;
             default:
                 Debug.Log("No ammo supplies in inventory");
                 break;
         }
+
+        //update text
+        inventoryCountText.text = totalPickUpCount.ToString();
     }
 
     private void UpdateHealthBar()

@@ -18,6 +18,7 @@ public class DisplayCompanionOneStatus : MonoBehaviour, IObserver
     public Text companionName;
     public Slider healthbar;
     public Text ammoCount;
+    public GameObject[] objectsToHide;
 
     // Start is called before the first frame update
     private void Start()
@@ -45,6 +46,16 @@ public class DisplayCompanionOneStatus : MonoBehaviour, IObserver
 
         //ammo
         ammoCount.text = Stats.Companion1Ammo.ToString();
+
+        //check if dead
+        if(Stats.Companion1Health == 0)
+        {
+            //hide buttons and ammo
+            foreach(GameObject item in objectsToHide)
+            {
+                item.SetActive(false);
+            }
+        }
     }
 
     public void Comp1AddAmmo()

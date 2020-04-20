@@ -19,6 +19,7 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
     private string statusToDisplay;
     public Text companionName;
     public Text ammoCount;
+    public GameObject[] objectsToHide;
 
     // Start is called before the first frame update
     private void Start()
@@ -47,6 +48,16 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
 
         //ammo
         ammoCount.text = Stats.Companion4Ammo.ToString();
+
+        //check if dead
+        if(Stats.Companion4Health == 0)
+        {
+            //hide buttons and ammo
+            foreach(GameObject item in objectsToHide)
+            {
+                item.SetActive(false);
+            }
+        }
     }
 
     public void Comp4AddAmmo()
