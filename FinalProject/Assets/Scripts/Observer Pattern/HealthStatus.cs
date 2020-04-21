@@ -93,7 +93,7 @@ public class HealthStatus : MonoBehaviour, ISubject
             cb.disabledColor = Color.green;
             inputSlider.colors = cb;
         }
-        else if(inputSlider.value < 7 && inputSlider.value > 3)
+        else if(inputSlider.value <= 7 && inputSlider.value > 3)
         {
             //set color to yellow
             cb.disabledColor = Color.yellow;

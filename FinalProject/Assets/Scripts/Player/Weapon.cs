@@ -104,7 +104,7 @@ public class Weapon : MonoBehaviour
                     if(hit.collider !=null)
                     {
                         //enemy hit
-                        if(hit.collider.CompareTag("Enemy"))
+                        if(hit.collider.gameObject.CompareTag("Enemy") == true)
                         {
                             //notify
                             hit.transform.SendMessageUpwards("Attacked");
@@ -129,7 +129,7 @@ public class Weapon : MonoBehaviour
                 if(hit.collider !=null)
                 {
                     //enemy hit
-                    if(hit.collider.CompareTag("Enemy"))
+                    if(hit.collider.gameObject.CompareTag("Enemy") == true)
                     {
                         //notify
                         hit.transform.SendMessageUpwards("Attacked");

@@ -14,7 +14,7 @@ public class EnemyControllerSTD : MonoBehaviour
     //variables
     public Transform target = null;
     public float speed = 2f;
-    public Transform player;
+    public Transform player = null;
     public float NORMAL_SPEED = 2f;
     public float EXPLODING_SPEED = 0f;
     private const float DETECTION_DISTANCE = 3f;
@@ -22,6 +22,7 @@ public class EnemyControllerSTD : MonoBehaviour
     private const float EXPLOADING_DISTANCE_ACTIVATION = .5f;
     public int damage = 3;
     private bool inRange;
+    public Sprite explodingSprite;
 
     //pattern
     public EnemyStates idleState {get; set;}
@@ -32,11 +33,33 @@ public class EnemyControllerSTD : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        //set vars and state vars
         idleState = gameObject.AddComponent<IdleState>();
         chasingState = gameObject.AddComponent<ChasingState>();
         explodingState = gameObject.AddComponent<ExplodingState>();
         currentState = idleState;
         inRange = false;
+        explodingSprite = this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+
+        //get player
+        switch (Stats.ActiveRunner)
+        {
+            case 1:
+                player = GameObject.Find("PlayerComp1").transform;
+                break;
+            case 2:
+                player = GameObject.Find("PlayerComp2").transform;
+                break;
+            case 3:
+                player = GameObject.Find("PlayerComp3").transform;
+                break;
+            case 4:
+                player = GameObject.Find("PlayerComp4").transform;
+                break;
+            default:
+                player = GameObject.Find("PlayerComp1").transform;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -50,7 +73,7 @@ public class EnemyControllerSTD : MonoBehaviour
             //look at target
             if(target != this.gameObject.transform && inRange)
             {
-                this.gameObject.transform.right = target.transform.position - transform.position;
+                this.gameObject.transform.up = target.transform.position - transform.position;
             }
 
             //check to see if in exploading range

@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameWorldManager : MonoBehaviour
 {
@@ -19,6 +20,33 @@ public class GameWorldManager : MonoBehaviour
     private PlayerController controller;
     public Collider2D safehouse;
     public GameObject safeHouseMenu;
+
+    //menu stuff
+    public GameObject inventoryMenu;
+
+    public GameObject ammoImage1;
+    public GameObject ammoImage2;
+    public GameObject ammoImage3;
+    public GameObject ammoImage4;
+    public GameObject ammoImage5;
+
+    public GameObject healthImage1;
+    public GameObject healthImage2;
+    public GameObject healthImage3;
+    public GameObject healthImage4;
+    public GameObject healthImage5;
+
+    public GameObject fuelImage1;
+    public GameObject fuelImage2;
+    public GameObject fuelImage3;
+    public GameObject fuelImage4;
+    public GameObject fuelImage5;
+    public GameObject hitEffect;
+    public Slider healthbar;
+
+    //misc stuff
+    public LevelLoader loader;
+    private PlayerController activeComp;
 
     // Start is called before the first frame update
     void Start()
@@ -32,36 +60,57 @@ public class GameWorldManager : MonoBehaviour
         //turn off menu
         safeHouseMenu.SetActive(false);
 
-        //get player to activate
-        switch(Stats.ActiveRunner)
+         //add player script to right character
+        switch (Stats.ActiveRunner)
         {
             case 1:
+                comp1.AddComponent<PlayerController>();
+                activeComp = comp1.GetComponent<PlayerController>();
                 comp1.SetActive(true);
-                controller = comp1.GetComponent<PlayerController>();
                 break;
-                
             case 2:
+                comp2.AddComponent<PlayerController>();
+                activeComp = comp2.GetComponent<PlayerController>();
                 comp2.SetActive(true);
-                controller = comp1.GetComponent<PlayerController>();
                 break;
-                
             case 3:
+                comp3.AddComponent<PlayerController>();
+                activeComp = comp3.GetComponent<PlayerController>();
                 comp3.SetActive(true);
-                controller = comp1.GetComponent<PlayerController>();
                 break;
-                
             case 4:
+                comp4.AddComponent<PlayerController>();
+                activeComp = comp4.GetComponent<PlayerController>();
                 comp4.SetActive(true);
-                controller = comp1.GetComponent<PlayerController>();
                 break;
-
             default:
-                //testing
+                comp1.AddComponent<PlayerController>();
+                activeComp = comp1.GetComponent<PlayerController>();
                 comp1.SetActive(true);
-                controller = comp1.GetComponent<PlayerController>();
                 break;
-
         }
+
+        //update player vars
+        activeComp.inventoryMenu = this.inventoryMenu;
+        activeComp.safeHouseMenu = this.safeHouseMenu;
+        activeComp.ammoImage1 = this.ammoImage1;
+        activeComp.ammoImage2 = this.ammoImage2;
+        activeComp.ammoImage3 = this.ammoImage3;
+        activeComp.ammoImage4 = this.ammoImage4;
+        activeComp.ammoImage5 = this.ammoImage5;
+        activeComp.healthImage1 = this.healthImage1;
+        activeComp.healthImage2 = this.healthImage2;
+        activeComp.healthImage3 = this.healthImage3;
+        activeComp.healthImage4 = this.healthImage4;
+        activeComp.healthImage5 = this.healthImage5;
+        activeComp.fuelImage1 = this.fuelImage1;
+        activeComp.fuelImage2 = this.fuelImage2;
+        activeComp.fuelImage3 = this.fuelImage3;
+        activeComp.fuelImage4 = this.fuelImage4;
+        activeComp.fuelImage5 = this.fuelImage5;
+        activeComp.hitEffect = this.hitEffect;
+        activeComp.healthbar = this.healthbar;
+        activeComp.loader = this.loader;
     }
 
 

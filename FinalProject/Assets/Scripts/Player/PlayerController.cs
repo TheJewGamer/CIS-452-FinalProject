@@ -24,10 +24,10 @@ public class PlayerController : MonoBehaviour
     private static int totalPickUpCount;
     private const int MAX_PICKUP_COUNT = 5;
     public Slider healthbar;
-    public GameObject rightCollider;
-    public GameObject leftCollider;
-    public Sprite rightLeftSprite;
-    public Sprite upDownSprite;
+    private GameObject rightCollider;
+    private GameObject leftCollider;
+    private Sprite rightLeftSprite;
+    private Sprite upDownSprite;
     public GameObject rightPistol;
     public GameObject leftPistol;
     public bool menuOpen;
@@ -62,8 +62,17 @@ public class PlayerController : MonoBehaviour
     {
         //get componets
         rb2d = this.GetComponent<Rigidbody2D>();
+        rightLeftSprite = this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+        upDownSprite = this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite;
+        leftCollider = this.gameObject.transform.GetChild(2).gameObject;
+        rightCollider = this.gameObject.transform.GetChild(3).gameObject;
+
+        //set tag to player
+        this.gameObject.tag = "Player";
 
         //weapon stuff
+        rightPistol = this.gameObject.transform.GetChild(4).gameObject;
+        leftPistol = this.gameObject.transform.GetChild(5).gameObject;
         leftPistol.SetActive(false);
 
         //inventory stuff
@@ -498,7 +507,7 @@ public class PlayerController : MonoBehaviour
             cb.disabledColor = Color.green;
             healthbar.colors = cb;
         }
-        else if(healthbar.value < 7 && healthbar.value > 3)
+        else if(healthbar.value <= 7 && healthbar.value > 3)
         {
             //set color to yellow
             cb.disabledColor = Color.yellow;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5432044441847631443}
   - component: {fileID: 8275751403228895766}
   - component: {fileID: 3900679191134337935}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: gasPickup
   m_TagString: Gas
   m_Icon: {fileID: 0}
