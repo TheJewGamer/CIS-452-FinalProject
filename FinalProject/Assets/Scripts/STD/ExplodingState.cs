@@ -47,7 +47,7 @@ public class ExplodingState : EnemyStates
         //check to see if player is in damage range
         if(Vector2.Distance(this.gameObject.transform.position, controller.player.position) < 1f)
         {
-            controller.player.GetComponent<PlayerController>().Attacked();
+            controller.player.GetComponent<PlayerController>().Attacked(controller.damage);
         }
 
         //remove enemy

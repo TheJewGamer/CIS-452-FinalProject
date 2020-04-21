@@ -200,9 +200,14 @@ public class PlayerController : MonoBehaviour
     
     public void Attacked(int damage = 1)
     {
+        //dec health
         health -= damage;
 
+        //feedback
         StartCoroutine(hitFlash());
+
+        //hud
+        UpdateHealthBar();
 
         //check
         if(health <= 0)

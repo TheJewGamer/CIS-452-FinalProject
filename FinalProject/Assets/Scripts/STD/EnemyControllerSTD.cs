@@ -20,6 +20,7 @@ public class EnemyControllerSTD : MonoBehaviour
     private const float DETECTION_DISTANCE = 3f;
     private float EXPLOADING_DAMAGE_RANGE = 1f;
     private const float EXPLOADING_DISTANCE_ACTIVATION = .5f;
+    public int damage = 3;
     private bool inRange;
 
     //pattern
@@ -90,5 +91,11 @@ public class EnemyControllerSTD : MonoBehaviour
     {
         //start exploading
         currentState.Explode();
+    }
+
+    public void Attacked()
+    {
+        //call
+        Exploding();
     }
 }
