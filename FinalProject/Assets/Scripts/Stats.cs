@@ -18,13 +18,23 @@ public static class Stats
     private static float companion2Health = 10;
     private static float companion3Health = 10;
     private static float companion4Health = 10;
-    private static float carHealth = 10;
+    private static float carFuel = 0;
+
+    private static int companion1Ammo = 50;
+    private static int companion2Ammo = 50;
+    private static int companion3Ammo = 50;
+    private static int companion4Ammo = 50;
 
     private static bool companion1Dead = false;
     private static bool companion2Dead = false;
     private static bool companion3Dead = false;
     private static bool companion4Dead = false;
-    private static bool carDestroyed = false;
+
+    private static int medicalSuppliesCount = 0;
+    private static int ammoSuppliesCount = 0;
+    private static int fuelSuppliesCount = 0;
+    private static int runsLeft = 4;
+    private static int activeRunner = 0;
 
     public static string Companion1Name
     {
@@ -134,15 +144,63 @@ public static class Stats
         }
     }
 
-    public static float CarHealth
+    public static float CarFuel
     {
         get
         {
-            return carHealth;
+            return carFuel;
         }
         set
         {
-            carHealth = value;
+            carFuel = value;
+        }
+    }
+
+    public static int Companion1Ammo
+    {
+        get
+        {
+            return companion1Ammo;
+        }
+        set
+        {
+            companion1Ammo = value;
+        }
+    }
+
+    public static int Companion2Ammo
+    {
+        get
+        {
+            return companion2Ammo;
+        }
+        set
+        {
+            companion2Ammo = value;
+        }
+    }
+
+    public static int Companion3Ammo
+    {
+        get
+        {
+            return companion3Ammo;
+        }
+        set
+        {
+            companion3Ammo = value;
+        }
+    }
+
+    public static int Companion4Ammo
+    {
+        get
+        {
+            return companion4Ammo;
+        }
+        set
+        {
+            companion4Ammo = value;
         }
     }
 
@@ -190,15 +248,62 @@ public static class Stats
             companion4Dead = value;
         }
     }
-    public static bool CarDestroyed
+
+    public static int MedicalSuppliesCount
     {
         get
         {
-            return carDestroyed;
+            return medicalSuppliesCount;
         }
         set
         {
-            carDestroyed = value;
+            medicalSuppliesCount = value;
+        }
+    }
+    public static int AmmoSuppliesCount
+    {
+        get
+        {
+            return ammoSuppliesCount;
+        }
+        set
+        {
+            ammoSuppliesCount = value;
+        }
+    }
+    public static int FuelSuppliesCount
+    {
+        get
+        {
+            return fuelSuppliesCount;
+        }
+        set
+        {
+            fuelSuppliesCount = value;
+        }
+    }
+
+    public static int RunsLeft
+    {
+        get
+        {
+            return runsLeft;
+        }
+        set
+        {
+            runsLeft = value;
+        }
+    }
+
+    public static int ActiveRunner
+    {
+        get
+        {
+            return activeRunner;
+        }
+        set
+        {
+            activeRunner = value;
         }
     }
 }

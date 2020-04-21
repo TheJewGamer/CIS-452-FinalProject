@@ -8,6 +8,7 @@ TagManager:
   - Gas
   - Health
   - Ammo
+  - Safehouse
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+    * Jacob Cohen
+    * NameSelectionController.cs
+    * Final Project
+    * General controller for the name selector level/menu
+*/
+
+
+using UnityEngine;
 using UnityEngine.UI;
 
 public class NameSelectionController : MonoBehaviour
@@ -38,7 +46,7 @@ public class NameSelectionController : MonoBehaviour
         if(companion1Text.text != null || companion2Text.text != null || companion3Text.text != null || companion4Text.text != null || carText.text != null)
         {
             //load overworld
-            loader.StartCoroutine("FadeToBlack", "Overworld");
+            loader.StartCoroutine("FadeToBlack", "Safehouse");
         }
         else
         {

@@ -22,11 +22,12 @@ public class Companion : MonoBehaviour
     public HealthStatus healthStatus;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
 
         healthStatus.AddCompanions(this);
 
+        //get health
         if (companion1)
         {
             companionCurrentHealth = Stats.Companion1Health;
@@ -47,11 +48,8 @@ public class Companion : MonoBehaviour
             companionCurrentHealth = Stats.Companion4Health;
             companionName = Stats.Companion4Name;
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        //update status message
         if (companionCurrentHealth >= 10)
         {
             statusMessage = "This survivor is doing well.";
