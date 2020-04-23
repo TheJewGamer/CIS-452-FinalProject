@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+    * Author: Jacob Cohen
+    * Script: TutSafehouseManager.cs
+    * Assignment: Final Project
+    * Description: Controls the safehouse tutorial level
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,35 +30,13 @@ public class TutSafehouseManager : MonoBehaviour
     public GameObject prompt15;
     public GameObject prompt16;
     public GameObject prompt17;
-    public GameObject prompt18;
-
-    private bool promp1Done;
-    private bool prompt1Done;
-    private bool prompt2Done;
-    private bool prompt3Done;
-    private bool prompt4Done;
-    private bool prompt5Done;
-    private bool prompt6Done;
-    private bool prompt7Done;
-    private bool prompt8Done;
-    private bool prompt9Done;
-    private bool prompt10Done;
-    private bool prompt11Done;
-    private bool prompt12Done;
-    private bool prompt13Done;
-    private bool prompt14Done;
-    private bool prompt15Done;
-    private bool prompt16Done;
-    private bool prompt17Done;
-    private bool prompt18Done;
-
+    public LevelLoader loader;
     private int currentPromptIndex;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
         //set
         currentPromptIndex = 1;
 
@@ -73,28 +58,6 @@ public class TutSafehouseManager : MonoBehaviour
         prompt15.SetActive(false);
         prompt16.SetActive(false);
         prompt17.SetActive(false);
-        prompt18.SetActive(false);
-
-        //false
-        promp1Done = false;
-        prompt1Done = false;
-        prompt2Done = false;
-        prompt3Done = false;
-        prompt4Done = false;
-        prompt5Done = false;
-        prompt6Done = false;
-        prompt7Done = false;
-        prompt8Done = false;
-        prompt9Done = false;
-        prompt10Done = false;
-        prompt11Done = false;
-        prompt12Done = false;
-        prompt13Done = false;
-        prompt14Done = false;
-        prompt15Done = false;
-        prompt16Done = false;
-        prompt17Done = false;
-        prompt18Done = false;
     }
 
     // Update is called once per frame
@@ -103,151 +66,138 @@ public class TutSafehouseManager : MonoBehaviour
         switch (currentPromptIndex)
         {
             case 1:
+                //active
+                prompt1.SetActive(true);
                 break;
             case 2:
+                //disable
+                prompt1.SetActive(false);
+
+                //active
+                prompt2.SetActive(true);
                 break;
             case 3:
+                //disable
+                prompt2.SetActive(false);
+
+                //active
+                prompt3.SetActive(true);
                 break;
             case 4:
+                //disable
+                prompt3.SetActive(false);
+
+                //active
+                prompt4.SetActive(true);
                 break;
             case 5:
+                //disable
+                prompt4.SetActive(false);
+
+                //active
+                prompt5.SetActive(true);
                 break;
             case 6:
+                //disable
+                prompt5.SetActive(false);
+
+                //active
+                prompt6.SetActive(true);
                 break;
             case 7:
+                //disable
+                prompt6.SetActive(false);
+
+                //active
+                prompt7.SetActive(true);
                 break;
             case 8:
+                //disable
+                prompt7.SetActive(false);
+
+                //active
+                prompt8.SetActive(true);
                 break;
             case 9:
+                //disable
+                prompt8.SetActive(false);
+
+                //active
+                prompt9.SetActive(true);
                 break;
             case 10:
+                //disable
+                prompt9.SetActive(false);
+
+                //active
+                prompt10.SetActive(true);
                 break;
             case 11:
+                //disable
+                prompt10.SetActive(false);
+
+                //active
+                prompt11.SetActive(true);
                 break;
             case 12:
+                //disable
+                prompt11.SetActive(false);
+
+                //active
+                prompt12.SetActive(true);
                 break;
             case 13:
+                //disable
+                prompt12.SetActive(false);
+
+                //active
+                prompt13.SetActive(true);
                 break;
             case 14:
+                //disable
+                prompt13.SetActive(false);
+
+                //active
+                prompt14.SetActive(true);
                 break;
             case 15:
+                //disable
+                prompt14.SetActive(false);
+
+                //active
+                prompt15.SetActive(true);
                 break;
             case 16:
+                //disable
+                prompt15.SetActive(false);
+
+                //active
+                prompt16.SetActive(true);
                 break;
             case 17:
+                //disable
+                prompt16.SetActive(false);
+
+                //active
+                prompt17.SetActive(true);
                 break;
             case 18:
+                //load next tut level
+                loader.StartCoroutine("FadeToBlack", "TutGameworld");
                 break;
             default:
                 Debug.Log("Error");
                 break;
         }
+    }
 
-        //prompt1
-        
-            //active
-            prompt1.SetActive(true);
-        //prompt2
-        if(prompt2)
-        {
-            //active
-            prompt2.SetActive(true);
-        }
-        //prompt3
-        else if(prompt3)
-        {
-            //active
-            prompt3.SetActive(true);
-        }
-        //prompt4
-        else if(prompt4)
-        {
-            //active
-            prompt4.SetActive(true);
-        }
-        //prompt5
-        else if(prompt5)
-        {
-            //active
-            prompt5.SetActive(true);
-        }
-        //prompt6
-        else if(prompt6)
-        {
-            //active
-            prompt6.SetActive(true);
-        }
-        //prompt7
-        else if(prompt7)
-        {
-            //active
-            prompt7.SetActive(true);
-        }
-        //prompt8
-        else if(prompt8)
-        {
-            //active
-            prompt8.SetActive(true);
-        }
-        //prompt9
-        else if(prompt9)
-        {
-            //active
-            prompt9.SetActive(true);
-        }
-        //prompt10
-        else if(prompt10)
-        {
-            //active
-            prompt10.SetActive(true);
-        }
-        //prompt11
-        else if(prompt11)
-        {
-            //active
-            prompt11.SetActive(true);
-        }
-        //prompt12
-        else if(prompt12)
-        {
-            //active
-            prompt12.SetActive(true);
-        }
-        //prompt13
-        else if(prompt13)
-        {
-            //active
-            prompt13.SetActive(true);
-        }
-        //prompt14
-        else if(prompt14)
-        {
-            //active
-            prompt14.SetActive(true);
-        }
-        //prompt15
-        else if(prompt15)
-        {
-            //active
-            prompt15.SetActive(true);
-        }
-        //prompt16
-        else if(prompt16)
-        {
-            //active
-            prompt16.SetActive(true);
-        }
-        //prompt17
-        else if(prompt17)
-        {
-            //active
-            prompt17.SetActive(true);
-        }
-        //prompt18
-        else if(prompt18)
-        {
-            //active
-            prompt18.SetActive(true);
-        }
+    public void NextPrompt()
+    {
+        currentPromptIndex++;
+    }
+
+    public void SkipTutorial()
+    {
+        currentPromptIndex = 18;
     }
 }

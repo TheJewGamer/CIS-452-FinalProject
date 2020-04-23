@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Tut.unity
-    guid: 930d6b6246255224285017bb41cfb418
+    path: Assets/Scenes/TutorialLevels/TutSafehouse.unity
+    guid: 450074d77123f5944b82989943070e85
+  - enabled: 1
+    path: Assets/Scenes/TutorialLevels/TutGameworld.unity
+    guid: 15d65301c49c7b0458a48f82e7050f06
   - enabled: 1
     path: Assets/Scenes/NameSelection.unity
     guid: 4c11cf91129043046b98ea9d6eacb639

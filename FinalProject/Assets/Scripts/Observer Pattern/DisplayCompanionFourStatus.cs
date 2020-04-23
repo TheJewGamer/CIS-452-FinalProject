@@ -34,7 +34,7 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
 
         if (companion.companion4)
         {
-            this.statusToDisplay = "Companion 4 Status: " + companion.statusMessage; //companion.statusMessage;
+            this.statusToDisplay = companion.companionName + " Status: " + companion.statusMessage; //companion.statusMessage;
             this.companionName.text = companion.companionName;
 
         }
