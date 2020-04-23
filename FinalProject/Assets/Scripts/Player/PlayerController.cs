@@ -576,6 +576,18 @@ public class PlayerController : MonoBehaviour
         loader.StartCoroutine("FadeToBlack", "Safehouse");
     }
 
+    public static int TotalPickUpCount
+    {
+        get
+        {
+            return totalPickUpCount;
+        }
+        set
+        {
+            totalPickUpCount = value;
+        }
+    }
+
 }
 
 
