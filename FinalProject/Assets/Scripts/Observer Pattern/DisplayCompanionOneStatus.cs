@@ -33,7 +33,7 @@ public class DisplayCompanionOneStatus : MonoBehaviour, IObserver
         this.statusToDisplay = "";
         if (companion.companion1)
         {
-            this.statusToDisplay = "Companion 1 Status: " + companion.statusMessage; //companion.statusMessage;
+            this.statusToDisplay = companion.companionName + " Status: " + companion.statusMessage; //companion.statusMessage;
             this.companionName.text = companion.companionName;
         }
         gameObject.GetComponent<Text>().text = this.statusToDisplay;

@@ -3080,9 +3080,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comp1: {fileID: 497091164}
-  comp2: {fileID: 0}
-  comp3: {fileID: 0}
-  comp4: {fileID: 0}
+  comp2: {fileID: 820168611}
+  comp3: {fileID: 1348993583}
+  comp4: {fileID: 390303422}
 --- !u!1 &1154567209
 GameObject:
   m_ObjectHideFlags: 0
