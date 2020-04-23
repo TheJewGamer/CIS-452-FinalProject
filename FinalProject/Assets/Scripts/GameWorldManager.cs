@@ -47,6 +47,7 @@ public class GameWorldManager : MonoBehaviour
     //misc stuff
     public LevelLoader loader;
     private PlayerController activeComp;
+    public AudioFacade audioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,9 @@ public class GameWorldManager : MonoBehaviour
 
         //turn off menu
         safeHouseMenu.SetActive(false);
+
+        //start intro music
+       // audioManager.
 
          //add player script to right character
         switch (Stats.ActiveRunner)
