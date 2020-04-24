@@ -46,7 +46,7 @@ public class ExplodingState : EnemyStates
         yield return new WaitForSeconds(1.5f);
 
         //check to see if player is in damage range
-        if(Vector2.Distance(this.gameObject.transform.position, controller.player.position) < 1f)
+        if(Vector2.Distance(this.gameObject.transform.position, controller.player.position) < controller.EXPLOADING_DAMAGE_RANGE)
         {
             controller.player.gameObject.GetComponent<PlayerController>().Attacked(controller.damage);
         }

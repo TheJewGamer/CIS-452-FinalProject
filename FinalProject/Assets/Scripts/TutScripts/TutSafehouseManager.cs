@@ -198,6 +198,7 @@ public class TutSafehouseManager : MonoBehaviour
 
     public void SkipTutorial()
     {
-        currentPromptIndex = 18;
+        //skip tuts
+        loader.StartCoroutine("FadeToBlack", "Safehouse");
     }
 }

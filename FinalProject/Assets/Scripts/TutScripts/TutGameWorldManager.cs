@@ -120,7 +120,7 @@ public class TutGameWorldManager : MonoBehaviour
                 prompt4.SetActive(true);
 
                 //check
-                if(Vector2.Distance(player.position, prompt4Target.position) <= .1f)
+                if(Vector2.Distance(player.position, prompt4Target.position) <= 1f)
                 {
                     //done
                     prompt4.SetActive(false);
@@ -182,7 +182,6 @@ public class TutGameWorldManager : MonoBehaviour
                 prompt9.SetActive(true);
                 break;
             default:
-                Debug.Log("Error");
                 break;
         }
     }

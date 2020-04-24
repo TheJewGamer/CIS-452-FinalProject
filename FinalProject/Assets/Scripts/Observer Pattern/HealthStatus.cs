@@ -16,28 +16,23 @@ public class HealthStatus : MonoBehaviour, ISubject
     public List<Companion> companions = new List<Companion>();
     public GameObject escapeButton;
     public LevelLoader loader;
+    public GameObject winMenu;
+    public GameObject loseMenu;
 
     private void Start()
     {
-        Debug.Log("The total amount of observers is: " + observers.Count);
-
-        foreach (IObserver observer in observers)
-        {
-            Debug.Log("This is observer: " + observer.ToString());
-        }
-
-        Debug.Log("The total amount of companions is: " + companions.Count);
-
-        foreach (Companion companion in companions)
-        {
-            Debug.Log("This companion is: " + companion.ToString());
-        }
-
-        //runs left
-        
+        //hide menus
+        winMenu.SetActive(false);
+        loseMenu.SetActive(false);
 
         //escape button
         CanEscape();
+
+        //check to see if game is over
+        if(Stats.RunsLeft == 0 && Stats.FuelSuppliesCount + Stats.CarFuel < 10)
+        {
+            loseMenu.SetActive(true);
+        }
     }
 
     public void RegisterObserver(IObserver observer)
@@ -63,7 +58,6 @@ public class HealthStatus : MonoBehaviour, ISubject
         foreach (IObserver observer in observers)
         {
             observer.UpdateData(companions);
-            Debug.Log("UpdateData was called from Notify Observers");
         }
     }
 
@@ -258,13 +252,14 @@ public class HealthStatus : MonoBehaviour, ISubject
     public void Escape()
     {
         //win menu
+        winMenu.SetActive(true);
     }
 
     public void startRun()
     {
         if(Stats.RunsLeft == 0)
         {
-            //lose
+            loseMenu.SetActive(true);
         }
         else if(Stats.ActiveRunner != 0)
         {
@@ -307,6 +302,7 @@ public class HealthStatus : MonoBehaviour, ISubject
         if(Stats.Companion1Health == 0 && Stats.Companion2Health == 0 && Stats.Companion3Health == 0 && Stats.Companion4Health == 0)
         {
             //game over
+            loseMenu.SetActive(true);
         }
     }
 }

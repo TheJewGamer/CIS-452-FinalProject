@@ -46,7 +46,7 @@ public class NameSelectionController : MonoBehaviour
         if(companion1Text.text != null || companion2Text.text != null || companion3Text.text != null || companion4Text.text != null || carText.text != null)
         {
             //load overworld
-            loader.StartCoroutine("FadeToBlack", "Safehouse");
+            loader.StartCoroutine("FadeToBlack", "TutSafehouse");
         }
         else
         {

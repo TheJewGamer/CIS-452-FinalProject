@@ -185,7 +185,8 @@ MonoBehaviour:
   player: {fileID: 0}
   NORMAL_SPEED: 1.5
   EXPLODING_SPEED: 0
-  damage: 3
+  EXPLOADING_DAMAGE_RANGE: 2.5
+  damage: 4
   explodingSprite: {fileID: 0}
 --- !u!114 &1976235174
 MonoBehaviour:

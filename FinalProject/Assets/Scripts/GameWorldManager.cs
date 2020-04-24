@@ -17,12 +17,11 @@ public class GameWorldManager : MonoBehaviour
     public GameObject comp2;
     public GameObject comp3;
     public GameObject comp4;
-    private PlayerController controller;
-    public Collider2D safehouse;
     public GameObject safeHouseMenu;
 
     //menu stuff
     public GameObject inventoryMenu;
+    public Text pickupCount;
 
     public GameObject ammoImage1;
     public GameObject ammoImage2;
@@ -115,35 +114,36 @@ public class GameWorldManager : MonoBehaviour
         activeComp.hitEffect = this.hitEffect;
         activeComp.healthbar = this.healthbar;
         activeComp.loader = this.loader;
+        activeComp.inventoryCountText = this.pickupCount;
     }
 
 
     //button stuff
     public void MedicalDropButton()
     {
-        controller.MedicalDrop();
+        activeComp.MedicalDrop();
     }
 
     public void FuelDropButton()
     {
-        controller.FuelDrop();
+        activeComp.FuelDrop();
     }
 
     public void AmmoDropButton()
     {
-        controller.AmmoDrop();
+        activeComp.AmmoDrop();
     }
 
     public void EndRunButton()
     {
         //done
-        controller.EndRun();
+        activeComp.EndRun();
     }
 
     public void StayOut()
     {
         //set menu is open
-        controller.menuOpen = false;
+        activeComp.menuOpen = false;
 
         //open menu
         safeHouseMenu.SetActive(false);
