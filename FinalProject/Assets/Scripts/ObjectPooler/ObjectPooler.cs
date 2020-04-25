@@ -95,6 +95,33 @@ public class ObjectPooler : MonoBehaviour
         return objectToSpawn;
     }
 
+    // Used to spawn the supply objects from thier respective pools.
+    public GameObject SpawnSuppliesFromPool(string tag, Vector3 position, Quaternion rotation)
+    {
+        // Check to make sure the Dictionary contains the pool with the tag passed into SpawnFromPool
+        if (!poolDictionary.ContainsKey(tag))
+        {
+            // If you get this error, be sure you set the Pool's tag correctly in the inspector
+            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
+            return null;
+        }
+
+        // Dequeue or remove the object to spawn (from the front of the line)
+        GameObject supplyObjectToSpawn = poolDictionary[tag].Dequeue();
+
+        // Set object to spawn to active
+        supplyObjectToSpawn.SetActive(true);
+        // Set the position and rotation of the object to what was passed into SpawnFromPool()
+        supplyObjectToSpawn.transform.position = position;
+        supplyObjectToSpawn.transform.rotation = rotation;
+
+        // Add the object back to the queue of objects (to the back of the line)
+        poolDictionary[tag].Enqueue(supplyObjectToSpawn);
+
+        // Return the object to spawn
+        return supplyObjectToSpawn;
+    }
+
     public void ReturnObjectToPool(string tag, GameObject objectToReturn)
     {
         // Set obj as inactive

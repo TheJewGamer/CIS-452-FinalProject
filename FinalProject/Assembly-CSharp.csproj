@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Factory\EnemyFactory.cs" />
     <Compile Include="Assets\Scripts\Factory\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Factory\SupplyFactory.cs" />
+    <Compile Include="Assets\Scripts\Factory\SupplySpawner.cs" />
     <Compile Include="Assets\Scripts\GameWorldManager.cs" />
     <Compile Include="Assets\Scripts\Menus\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\Menus\MainMenuController.cs" />
