@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : iEnemy
 {
     //variables
     private bool seePlayer;
@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Attacked(GameObject player)
+    public override void Attacked(GameObject player)
     {
         //kill
         Destroy(this.gameObject);
