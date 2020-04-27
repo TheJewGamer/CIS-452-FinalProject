@@ -26,6 +26,7 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
     {
         this.statusToDisplay = GetComponent<Text>().text;
         healthStatus.RegisterObserver(this);
+        healthbar.value = Stats.MaxHealth;
     }
 
     public void UpdateData(List<Companion> companions)

@@ -145,33 +145,38 @@ public class HealthStatus : MonoBehaviour, ISubject
     public void AmmoSubtracted(Companion input)
     {
         //check to see if we have ammo
-        if(input.companion1)
+        if(input.companion1 && Stats.Companion1Ammo > 0)
         {
             Stats.Companion1Ammo--;
             Stats.AmmoSuppliesCount++;
+
+            //update observers
+            NotifyObservers();
         }
-        else if(input.companion2)
+        else if(input.companion2 && Stats.Companion2Ammo > 0)
         {
             Stats.Companion2Ammo--;
             Stats.AmmoSuppliesCount++;
+
+            //update observers
+            NotifyObservers();
         }
-        else if(input.companion3)
+        else if(input.companion3 && Stats.Companion3Ammo > 0)
         {
             Stats.Companion3Ammo--;
             Stats.AmmoSuppliesCount++;
+
+            //update observers
+            NotifyObservers();
         }
-        else if(input.companion4)
+        else if(input.companion4 && Stats.Companion4Ammo > 0)
         {
             Stats.Companion4Ammo--;
             Stats.AmmoSuppliesCount++;
-        }
-        else
-        {
-            Debug.Log("Error on adding ammo");
-        }
 
-        //update observers
-        NotifyObservers();
+            //update observers
+            NotifyObservers();
+        }
     }
 
     public void Healed(Companion input)
@@ -180,38 +185,38 @@ public class HealthStatus : MonoBehaviour, ISubject
         if(Stats.MedicalSuppliesCount > 0)
         {
             //which companion
-            if(input.companion1 && Stats.Companion1Health < 10 && !Stats.Companion1Dead)
+            if(input.companion1 && Stats.Companion1Health < Stats.MaxFuel && !Stats.Companion1Dead)
             {
-                Stats.Companion1Health++;
+                Stats.Companion1Health = Stats.MaxFuel;
                 Stats.MedicalSuppliesCount--;
+
+                //update observers
+                NotifyObservers();
             }
-            else if(input.companion2 && Stats.Companion2Health < 10 && !Stats.Companion2Dead)
+            else if(input.companion2 && Stats.Companion2Health < Stats.MaxFuel && !Stats.Companion2Dead)
             {
-                Stats.Companion2Health++;
+                Stats.Companion2Health = Stats.MaxFuel;
                 Stats.MedicalSuppliesCount--;
+
+                //update observers
+                NotifyObservers();
             }
-            else if(input.companion3 && Stats.Companion3Health < 10 && !Stats.Companion3Dead)
+            else if(input.companion3 && Stats.Companion3Health < Stats.MaxFuel && !Stats.Companion3Dead)
             {
-                Stats.Companion3Health++;
+                Stats.Companion3Health = Stats.MaxFuel;
                 Stats.MedicalSuppliesCount--;
+
+                //update observers
+                NotifyObservers();
             }
-            else if(input.companion4 && Stats.Companion4Health < 10 && !Stats.Companion4Dead)
+            else if(input.companion4 && Stats.Companion4Health < Stats.MaxFuel && !Stats.Companion4Dead)
             {
                 Stats.Companion4Health++;
                 Stats.MedicalSuppliesCount--;
-            }
-            else
-            {
-                Debug.Log("Error on adding health");
-            }
 
-            //update observers
-            NotifyObservers();
-        }
-        else
-        {
-            //no health
-            Debug.Log("No health supplies");
+                //update observers
+                NotifyObservers();
+            }
         }
     }
 
@@ -221,25 +226,25 @@ public class HealthStatus : MonoBehaviour, ISubject
         if(Stats.FuelSuppliesCount > 0)
         {
             //check to make sure car is not already full
-            if(Stats.CarFuel < 10)
+            if(Stats.CarFuel < Stats.MaxFuel)
             {
                 //add fuel
                 Stats.CarFuel++;
                 Stats.FuelSuppliesCount--;
+            
+                //update observers
+                NotifyObservers();
+
+                //check to see if we can escape
+                CanEscape();
             }
-
-            //update observers
-            NotifyObservers();
-
-            //check to see if we can escape
-            CanEscape();
         }
     }
 
     private void CanEscape()
     {
         //check
-        if(Stats.CarFuel == 10)
+        if(Stats.CarFuel == Stats.MaxFuel)
         {
             escapeButton.SetActive(true);
         }

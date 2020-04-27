@@ -18,23 +18,26 @@ public static class Stats
     private static float companion2Health = 10;
     private static float companion3Health = 10;
     private static float companion4Health = 10;
+    private static int maxHealth = 10;
     private static float carFuel = 0;
+    private static int maxFuel = 10;
 
-    private static int companion1Ammo = 50;
-    private static int companion2Ammo = 50;
-    private static int companion3Ammo = 50;
-    private static int companion4Ammo = 50;
+    private static int companion1Ammo = 10;
+    private static int companion2Ammo = 10;
+    private static int companion3Ammo = 10;
+    private static int companion4Ammo = 10;
 
     private static bool companion1Dead = false;
     private static bool companion2Dead = false;
     private static bool companion3Dead = false;
     private static bool companion4Dead = false;
 
-    private static int medicalSuppliesCount = 0;
+    private static int medicalSuppliesCount = 2;
     private static int ammoSuppliesCount = 0;
     private static int fuelSuppliesCount = 0;
     private static int runsLeft = 4;
     private static int activeRunner = 0;
+    private static int ammoPerPickup = 10;
 
     public static string Companion1Name
     {
@@ -144,6 +147,14 @@ public static class Stats
         }
     }
 
+    public static int MaxHealth
+    {
+        get
+        {
+            return maxHealth;
+        }
+    }
+
     public static float CarFuel
     {
         get
@@ -153,6 +164,14 @@ public static class Stats
         set
         {
             carFuel = value;
+        }
+    }
+
+    public static int MaxFuel
+    {
+        get
+        {
+            return maxFuel;
         }
     }
 
@@ -304,6 +323,14 @@ public static class Stats
         set
         {
             activeRunner = value;
+        }
+    }
+
+    public static int AmmoPerPickup
+    {
+        get
+        {
+            return ammoPerPickup;
         }
     }
 }

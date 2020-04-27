@@ -21,12 +21,13 @@ public class CarStatus : MonoBehaviour, IObserver
     {
         healthStatus.RegisterObserver(this);
         carName.text = Stats.CarName;
+        fuelbar.maxValue = Stats.MaxFuel;
     }
 
     public void UpdateData(List<Companion> companions)
     {
         //update fuelbar
-        fuelbar.value = Stats.Companion1Health;
+        fuelbar.value = Stats.CarFuel;
 
         //color
         healthStatus.ColorHealthCheck(fuelbar);

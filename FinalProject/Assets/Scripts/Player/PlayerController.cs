@@ -536,7 +536,7 @@ public class PlayerController : MonoBehaviour
             //save supplies
             Stats.FuelSuppliesCount += fuelSupplyCount;
             Stats.MedicalSuppliesCount += medicalSupplyCount;
-            Stats.AmmoSuppliesCount += ammoSupplyCount;
+            Stats.AmmoSuppliesCount += (Stats.AmmoPerPickup * ammoSupplyCount);
         }
 
         //save player stats
