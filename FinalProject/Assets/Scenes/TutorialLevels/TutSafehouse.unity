@@ -1297,7 +1297,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Above the active runner you can see how many runs you left. After these
-    run out your can no longer gather anymore supplies
+    run out your can no longer gather anymore supplies.
 --- !u!222 &170927945
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9728,7 +9728,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: To the right of the health bar is the companion's current status. This
-    will tell you how they are currently doing and if they need help
+    will tell you how they are currently doing and if they need help.
 --- !u!222 &1565795297
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11223,7 +11223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: When you have enough fuel you can escape and win the game
+  m_Text: When you have enough fuel you can escape and win the game.
 --- !u!222 &1828327191
 CanvasRenderer:
   m_ObjectHideFlags: 0
