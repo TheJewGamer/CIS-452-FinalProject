@@ -20,6 +20,7 @@ public class SongCollection : MonoBehaviour
     public AudioClip zombieHurt;
     public AudioClip zombieMoan;
     public AudioClip pistolShot;
+    public AudioClip pistolEmpty;
     public AudioClip itemPickup;
 
     public GameObject playerName;
@@ -75,8 +76,14 @@ public class SongCollection : MonoBehaviour
         soundEffects.PlayOneShot(pistolShot);
     }
 
-    public void ItemPickUp()
+    public void PlayPistolOutOfAmmo()
     {
+        soundEffects.PlayOneShot(pistolEmpty);
+    }
+
+    public void PlayItemPickUp()
+    {
+        soundEffects.volume = 1.0f;
         soundEffects.PlayOneShot(itemPickup);
     }
 

@@ -1,5 +1,5 @@
 ﻿/*
-    * Jacob Cohen
+    * Jacob Cohen, Edited by CJ on 4/28/2020
     * PlayerController.cs
     * Final Project
     * controls the player
@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     //variables
-    private Vector2  movement;
+    private Vector2 movement;
     private Rigidbody2D rb2d;
     private float health;
     private float speed = 3f;
@@ -57,9 +57,17 @@ public class PlayerController : MonoBehaviour
     public Text inventoryCountText;
 
 
+    // Reference Variable to the zombie and player sounds.
+    public SongCollection songCollection;
+
+
     // Start is called before the first frame update
     void Start()
     {
+
+        // Reference to the song collection script to play the correct audio
+        songCollection = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<SongCollection>();
+
         //get componets
         rb2d = this.GetComponent<Rigidbody2D>();
         rightLeftSprite = this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
@@ -117,13 +125,13 @@ public class PlayerController : MonoBehaviour
             case 3:
                 health = Stats.Companion3Health;
                 break;
-            
+
             //comp 4
             case 4:
                 health = Stats.Companion4Health;
                 break;
-                
-                //testing
+
+            //testing
             default:
                 health = Stats.Companion1Health;
                 break;
@@ -141,17 +149,17 @@ public class PlayerController : MonoBehaviour
         movement.y = Input.GetAxis("Vertical");
 
         //make sure menu is not open
-        if(!menuOpen)
+        if (!menuOpen)
         {
             //make sure not dead
-            if(health > 0)
+            if (health > 0)
             {
                 //actually moving player here
                 rb2d.MovePosition(rb2d.position + movement * speed * Time.fixedDeltaTime);
             }
-            
+
             //sprite direction anim
-            if(Input.mousePosition.y > (Screen.width / 2))
+            if (Input.mousePosition.y > (Screen.width / 2))
             {
                 //looking up
                 this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
@@ -161,7 +169,7 @@ public class PlayerController : MonoBehaviour
                 rightPistol.SetActive(true);
                 leftPistol.SetActive(false);
             }
-            else if(Input.mousePosition.x < (Screen.width / 2))
+            else if (Input.mousePosition.x < (Screen.width / 2))
             {
                 //looking left
                 this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
@@ -171,7 +179,7 @@ public class PlayerController : MonoBehaviour
                 rightPistol.SetActive(false);
                 leftPistol.SetActive(true);
             }
-            else if(Input.mousePosition.x > (Screen.width / 2))
+            else if (Input.mousePosition.x > (Screen.width / 2))
             {
                 //looking right
                 this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
@@ -184,10 +192,10 @@ public class PlayerController : MonoBehaviour
         }
 
         //open/close menu
-        if(Input.GetKeyDown(KeyCode.Tab) == true && !safeHouseMenu.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Tab) == true && !safeHouseMenu.activeSelf)
         {
             //open
-            if(!menuOpen)
+            if (!menuOpen)
             {
                 //var update
                 menuOpen = true;
@@ -204,9 +212,9 @@ public class PlayerController : MonoBehaviour
                 inventoryMenu.SetActive(false);
             }
         }
-        
+
     }
-    
+
     public void Attacked(int damage = 1)
     {
         //dec health
@@ -219,7 +227,7 @@ public class PlayerController : MonoBehaviour
         UpdateHealthBar();
 
         //check
-        if(health <= 0)
+        if (health <= 0)
         {
             //back to safehouse
             EndRun();
@@ -238,13 +246,16 @@ public class PlayerController : MonoBehaviour
         hitEffect.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D other)
     {
         //ammo pickup
-        if(other.gameObject.tag == "Ammo")
+        if (other.gameObject.tag == "Ammo")
         {
+
+            songCollection.PlayItemPickUp();
+
             //space check
-            if(totalPickUpCount < MAX_PICKUP_COUNT)
+            if (totalPickUpCount < MAX_PICKUP_COUNT)
             {
                 //inc pickup count
                 totalPickUpCount++;
@@ -280,10 +291,13 @@ public class PlayerController : MonoBehaviour
                 inventoryCountText.text = totalPickUpCount.ToString();
             }
         }
-        else if(other.gameObject.tag == "Health")
+        else if (other.gameObject.tag == "Health")
         {
+
+            songCollection.PlayItemPickUp();
+
             //space check
-            if(totalPickUpCount < MAX_PICKUP_COUNT)
+            if (totalPickUpCount < MAX_PICKUP_COUNT)
             {
                 //inc pickup count
                 totalPickUpCount++;
@@ -319,10 +333,13 @@ public class PlayerController : MonoBehaviour
                 inventoryCountText.text = totalPickUpCount.ToString();
             }
         }
-        else if(other.gameObject.tag == "Gas")
+        else if (other.gameObject.tag == "Gas")
         {
+
+            songCollection.PlayItemPickUp(); songCollection.PlayItemPickUp();
+
             //space check
-            if(totalPickUpCount < MAX_PICKUP_COUNT)
+            if (totalPickUpCount < MAX_PICKUP_COUNT)
             {
                 //inc pickup count
                 totalPickUpCount++;
@@ -358,7 +375,7 @@ public class PlayerController : MonoBehaviour
                 inventoryCountText.text = totalPickUpCount.ToString();
             }
         }
-        else if(other.gameObject.tag == "Safehouse")
+        else if (other.gameObject.tag == "Safehouse")
         {
             //set menu is open
             menuOpen = true;
@@ -494,20 +511,20 @@ public class PlayerController : MonoBehaviour
         ColorBlock cb = healthbar.colors;
 
         //check to see if dead
-        if(healthbar.value <= 0)
+        if (healthbar.value <= 0)
         {
             //call
             EndRun();
         }
 
         //color change/confirm
-        if(healthbar.value > 7)
+        if (healthbar.value > 7)
         {
             //set color to green
             cb.disabledColor = Color.green;
             healthbar.colors = cb;
         }
-        else if(healthbar.value <= 7 && healthbar.value > 3)
+        else if (healthbar.value <= 7 && healthbar.value > 3)
         {
             //set color to yellow
             cb.disabledColor = Color.yellow;
@@ -527,7 +544,7 @@ public class PlayerController : MonoBehaviour
         bool dead = false;
 
         //check to see if dead
-        if(health == 0)
+        if (health == 0)
         {
             dead = true;
         }

@@ -1,5 +1,5 @@
 ﻿/*
-    * Jacob Cohen
+    * Jacob Cohen, Edited by CJ on 4/28/2020
     * EnemyControllerSTD.cs
     * Final Project
     * Controls the enemy
