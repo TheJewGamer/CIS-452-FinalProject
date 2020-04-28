@@ -115,6 +115,10 @@ public class GameWorldManager : MonoBehaviour
         activeComp.healthbar = this.healthbar;
         activeComp.loader = this.loader;
         activeComp.inventoryCountText = this.pickupCount;
+
+        //start the spawning generation
+
+        ProcGenFacade.instance.Generate();
     }
 
 

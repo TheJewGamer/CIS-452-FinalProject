@@ -32,6 +32,10 @@ public class ObjectPooler : MonoBehaviour
         {
             instance = this;
         }
+
+        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+
+        FillPoolsWithInactiveObjects();
     }
     #endregion
 
@@ -39,9 +43,7 @@ public class ObjectPooler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        FillPoolsWithInactiveObjects();
     }
 
     // Fill the pools with inactive objects on Start()

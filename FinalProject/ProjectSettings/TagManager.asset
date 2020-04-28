@@ -9,6 +9,7 @@ TagManager:
   - Health
   - Ammo
   - Safehouse
+  - SpawnPosition
   layers:
   - Default
   - TransparentFX

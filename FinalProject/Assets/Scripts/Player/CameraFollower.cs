@@ -17,7 +17,7 @@ public class CameraFollower : MonoBehaviour
     public GameObject comp3;
     public GameObject comp4;
     private GameObject player;
-    private Vector3 offset;
+    private Vector3 offset = new Vector3(0f,0f,-10f);
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +53,7 @@ public class CameraFollower : MonoBehaviour
         }
 
         //set offset
-        offset = this.transform.position - player.transform.position;
+        //offset = this.transform.position - player.transform.position;
     }
 
     void LateUpdate()
