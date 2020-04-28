@@ -49,14 +49,9 @@ public class Companion : MonoBehaviour
         }
 
         //update status message
-        if (companionCurrentHealth >= 10)
+        if (companionCurrentHealth <= 0)
         {
-            statusMessage = "This survivor is doing well.";
-            healthStatus.NotifyObservers();
-        }
-        else if (companionCurrentHealth < 10 && companionCurrentHealth > 5)
-        {
-            statusMessage = "This survivor is injured. They may need healing.";
+            statusMessage = "This survivor has died...Rest In Peace ";
             healthStatus.NotifyObservers();
         }
         else if (companionCurrentHealth < 5)
@@ -64,9 +59,14 @@ public class Companion : MonoBehaviour
             statusMessage = "This survivor is seriously injured and needs immediate medical attention";
             healthStatus.NotifyObservers();
         }
-        else if (companionCurrentHealth <= 0)
+        else if (companionCurrentHealth < 10 && companionCurrentHealth > 5)
         {
-            statusMessage = "This survivor has died...Rest In Peace ";
+            statusMessage = "This survivor is injured. They may need healing.";
+            healthStatus.NotifyObservers();
+        }
+        else if (companionCurrentHealth >= 10)
+        {
+            statusMessage = "This survivor is doing well.";
             healthStatus.NotifyObservers();
         }
     }

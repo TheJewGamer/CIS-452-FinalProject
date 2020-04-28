@@ -562,11 +562,52 @@ public class PlayerController : MonoBehaviour
                 Stats.Companion3Health = health;
                 Stats.Companion3Ammo = Weapon.Ammo;
                 break;
-            
+
             //comp 4
             case 4:
                 Stats.Companion4Dead = dead;
                 Stats.Companion4Health = health;
+                Stats.Companion4Ammo = Weapon.Ammo;
+                break;
+
+        }
+        //exit back to safehouse
+        loader.StartCoroutine("FadeToBlack", "Safehouse");
+    }
+
+    public void EndRunFromTimer()
+    {
+        //var
+        bool dead = true;
+
+        //save player stats
+        switch (Stats.ActiveRunner)
+        {
+            //comp 1
+            case 1:
+                Stats.Companion1Dead = dead;
+                Stats.Companion1Health = 0;
+                Stats.Companion1Ammo = Weapon.Ammo;
+                break;
+
+            //comp 2
+            case 2:
+                Stats.Companion2Dead = dead;
+                Stats.Companion2Health = 0;
+                Stats.Companion2Ammo = Weapon.Ammo;
+                break;
+
+            //comp 3
+            case 3:
+                Stats.Companion3Dead = dead;
+                Stats.Companion3Health = 0;
+                Stats.Companion3Ammo = Weapon.Ammo;
+                break;
+
+            //comp 4
+            case 4:
+                Stats.Companion4Dead = dead;
+                Stats.Companion4Health = 0;
                 Stats.Companion4Ammo = Weapon.Ammo;
                 break;
 

@@ -19,6 +19,8 @@ public class EnemySpawner : MonoBehaviour
     public float firerate;
     private float nextFire;
 
+    public GameObject[] enemiesInGame;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,9 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time > nextFire)
+        enemiesInGame = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if(Time.time > nextFire && enemiesInGame.Length <= 5)
         {
             nextFire = Time.time + firerate;
             type = "ExplodingEnemy";
