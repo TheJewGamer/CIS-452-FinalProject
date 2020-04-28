@@ -1,7 +1,7 @@
 ﻿/*
  * Kevon Long
  * Timer.cs
- * Shows how long you've been alive
+ * Shows how long you've got left in the run
  */
 
 using System.Collections;

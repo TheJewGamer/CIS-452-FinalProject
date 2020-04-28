@@ -28,10 +28,6 @@ public class Weapon : MonoBehaviour
 
     private void Start() 
     {
-
-        // Reference to the song collection script to play the correct audio
-        songCollection = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<SongCollection>();
-
         this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
         melee = false;
         emptyText.SetActive(false);

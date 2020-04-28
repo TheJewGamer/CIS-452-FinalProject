@@ -1,90 +1,76 @@
-﻿using System.Collections;
+﻿/*
+    * CJ, Jacob Cohen
+    * SongCollection.cs
+    * Final Project
+    * stores the audioplayers and plays them
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public class SongCollection : MonoBehaviour
 {
-    public AudioSource audioPlayer;
-
     // Songs
-    public AudioClip inspirationalTheme;
-    public AudioClip electronicTheme;
-    public AudioClip classicalTheme;
-    public AudioClip throwbackTheme;
-
-    // Sound Efect Audio Source
-    public AudioSource soundEffects;
+    public AudioSource inspirationalTheme;
+    public AudioSource electronicTheme;
+    public AudioSource classicalTheme;
+    public AudioSource throwbackTheme;
 
     // Sound Effects
-    public AudioClip zombieHurt;
-    public AudioClip zombieMoan;
-    public AudioClip pistolShot;
-    public AudioClip pistolEmpty;
-    public AudioClip itemPickup;
-
-    public GameObject playerName;
+    public AudioSource zombieHurt;
+    public AudioSource zombieMoan;
+    public AudioSource pistolShot;
+    public AudioSource pistolEmpty;
+    public AudioSource itemPickup;
 
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (playerName == null)
+        switch (Stats.ActiveRunner)
         {
-            playerName = GameObject.FindGameObjectWithTag("Player");
+            case 1:
+                inspirationalTheme.Play();
+                break;
+            case 2:
+                electronicTheme.Play();
+                break;
+            case 3:
+                classicalTheme.Play();
+                break;
+            case 4:
+                throwbackTheme.Play();
+                break;
+            default:
+                inspirationalTheme.Play();
+                break;
         }
-       
-        if(!audioPlayer.isPlaying)
-        {
-            if (playerName.name == "PlayerComp1")
-            {
-                audioPlayer.PlayOneShot(inspirationalTheme);
-            }
-            else if (playerName.name == "PlayerComp2")
-            {
-                audioPlayer.PlayOneShot(electronicTheme);
-            }
-            else if (playerName.name == "PlayerComp3")
-            {
-                audioPlayer.PlayOneShot(classicalTheme);
-            }
-            else if (playerName.name == "PlayerComp4")
-            {
-                audioPlayer.PlayOneShot(throwbackTheme);
-            }
-        }
-
     }
 
     // These functions handle playing the correct audio
     public void PlayZombieHurt()
     {   
-        soundEffects.PlayOneShot(zombieHurt);
+        zombieHurt.Play();
     }    
     public void PlayZombieActivate()
     {
-        soundEffects.PlayOneShot(zombieMoan);
+       zombieMoan.Play();
     }
 
     public void PlayPistolFire()
     {
-        soundEffects.PlayOneShot(pistolShot);
+        pistolShot.Play();
     }
 
     public void PlayPistolOutOfAmmo()
     {
-        soundEffects.PlayOneShot(pistolEmpty);
+        pistolEmpty.Play();
     }
 
     public void PlayItemPickUp()
     {
-        soundEffects.volume = 1.0f;
-        soundEffects.PlayOneShot(itemPickup);
+        itemPickup.Play();
     }
 
 }
