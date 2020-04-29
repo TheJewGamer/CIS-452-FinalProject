@@ -1,5 +1,5 @@
 ﻿/*
-    * Jacob Cohen
+    * Jacob Cohen, Edited by CJ on 4/28/2020
     * EnemyControllerSTD.cs
     * Final Project
     * Controls the enemy
@@ -24,6 +24,9 @@ public class EnemyControllerSTD : MonoBehaviour
     private bool inRange;
     public Sprite explodingSprite;
 
+    // Reference Variable to the zombie and player sounds.
+    public SongCollection songCollection;
+
     //pattern
     public EnemyStates idleState {get; set;}
     public EnemyStates chasingState {get; set;}
@@ -33,6 +36,9 @@ public class EnemyControllerSTD : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        // Reference to the song collection script to play the correct audio
+        songCollection = GameObject.FindGameObjectWithTag("Audio Player").GetComponent<SongCollection>();
+
         //set vars and state vars
         idleState = gameObject.AddComponent<IdleState>();
         chasingState = gameObject.AddComponent<ChasingState>();
@@ -101,6 +107,9 @@ public class EnemyControllerSTD : MonoBehaviour
         //start chasing
         inRange = true;
         currentState.StartChasing();
+
+        // Plays the zombie moan sound when the player gets close to it.
+        songCollection.PlayZombieActivate();
     }
 
     public void OutOfRange()

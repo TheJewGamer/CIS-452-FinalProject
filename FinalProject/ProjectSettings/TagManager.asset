@@ -9,7 +9,7 @@ TagManager:
   - Health
   - Ammo
   - Safehouse
-  - SpawnPosition
+  - Audio Player
   layers:
   - Default
   - TransparentFX

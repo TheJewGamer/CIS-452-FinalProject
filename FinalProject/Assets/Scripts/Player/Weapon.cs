@@ -1,5 +1,5 @@
 ﻿/*
-    * Jacob Cohen
+    * Jacob Cohen, Edited by CJ on 4/28/2020
     * Weapon.cs
     * Final Project
     * controls the weapon
@@ -12,6 +12,10 @@ using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
+
+    // Reference Variable to the zombie and player sounds.
+    public SongCollection songCollection;
+
     //variables
     private Vector2 direction;
     public Sprite pistol;
@@ -89,6 +93,9 @@ public class Weapon : MonoBehaviour
                 //check to make sure we have ammo
                 if(ammo > 0)
                 {
+
+                    songCollection.PlayPistolFire();
+
                     //feedback
                     StartCoroutine(Flash());
 
@@ -113,6 +120,9 @@ public class Weapon : MonoBehaviour
                 }
                 else
                 {
+
+                    songCollection.PlayPistolOutOfAmmo();
+
                     //no ammo prompt
                     StartCoroutine(Empty());
                 }
