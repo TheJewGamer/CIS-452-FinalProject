@@ -55,6 +55,7 @@ public class TutPlayerController : MonoBehaviour
     public GameObject fuelImage5;
     public LevelLoader loader;
     public Text inventoryCountText;
+    public SongCollection songCollection;
 
 
     // Start is called before the first frame update
@@ -220,6 +221,8 @@ public class TutPlayerController : MonoBehaviour
             //space check
             if(totalPickUpCount < MAX_PICKUP_COUNT)
             {
+                songCollection.PlayItemPickUp();
+
                 //inc pickup count
                 totalPickUpCount++;
                 ammoSupplyCount++;
@@ -259,6 +262,8 @@ public class TutPlayerController : MonoBehaviour
             //space check
             if(totalPickUpCount < MAX_PICKUP_COUNT)
             {
+                songCollection.PlayItemPickUp();
+
                 //inc pickup count
                 totalPickUpCount++;
                 medicalSupplyCount++;
@@ -298,6 +303,8 @@ public class TutPlayerController : MonoBehaviour
             //space check
             if(totalPickUpCount < MAX_PICKUP_COUNT)
             {
+                songCollection.PlayItemPickUp();
+
                 //inc pickup count
                 totalPickUpCount++;
                 fuelSupplyCount++;

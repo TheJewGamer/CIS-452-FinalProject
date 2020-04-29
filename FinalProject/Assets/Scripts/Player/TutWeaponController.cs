@@ -21,6 +21,7 @@ public class TutWeaponController : MonoBehaviour
     private bool melee;
     public static int ammo;
     public GameObject emptyText;
+    public SongCollection songCollection;
 
     private void Start() 
     {
@@ -66,6 +67,9 @@ public class TutWeaponController : MonoBehaviour
                     //feedback
                     StartCoroutine(Flash());
 
+                    //audio
+                    songCollection.PlayPistolFire();
+
                     //dec ammo
                     ammo--;
 
@@ -89,6 +93,9 @@ public class TutWeaponController : MonoBehaviour
                 {
                     //no ammo prompt
                     StartCoroutine(Empty());
+
+                    //audio
+                    songCollection.PlayPistolOutOfAmmo();
                 }
                 
             }
