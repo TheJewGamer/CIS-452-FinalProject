@@ -21,12 +21,16 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
     public Text ammoCount;
     public GameObject[] objectsToHide;
 
+    public SafeHouseAudioManager safeHouseAudioManager;
+
     // Start is called before the first frame update
     private void Start()
     {
         this.statusToDisplay = GetComponent<Text>().text;
         healthStatus.RegisterObserver(this);
         healthbar.value = Stats.MaxHealth;
+
+        safeHouseAudioManager = GameObject.Find("Scripts").GetComponent<SafeHouseAudioManager>();
     }
 
     public void UpdateData(List<Companion> companions)
@@ -64,16 +68,33 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
     public void Comp4AddAmmo()
     {
         healthStatus.AmmoAdded(companion);
+
+        if(Stats.AmmoSuppliesCount > 0)
+        {
+            safeHouseAudioManager.PlayPlusButton();
+        }
+
     }
 
     public void Comp4SubtractAmmo()
     {
         healthStatus.AmmoSubtracted(companion);
+
+        if (Stats.Companion2Ammo > 0)
+        {
+            safeHouseAudioManager.PlayMinusButton();
+        }
     }
 
     public void Comp4Heal()
     {
         healthStatus.Healed(companion);
+
+        if(Stats.MedicalSuppliesCount > 0 && Stats.Companion4Health < 10)
+        {
+            safeHouseAudioManager.PlayPlusButton();
+        }
+
     }
 
     public void Comp4Runner()
