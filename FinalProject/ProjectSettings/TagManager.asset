@@ -10,6 +10,7 @@ TagManager:
   - Ammo
   - Safehouse
   - Audio Player
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
