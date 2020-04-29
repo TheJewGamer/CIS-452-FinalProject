@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ResourcePlacer : MonoBehaviour
 {
-    public GameObject fuel;
     public int fuelAmountInLevel = 1;
-    public GameObject Ammo;
 
     public int ammoAmountInLevel = 1;
+
+    public int healthAmountInLevel = 1;
 
     
     public void SpawnItems()
@@ -68,8 +68,17 @@ public class ResourcePlacer : MonoBehaviour
         }
 
         //spawn some enemies in the remaining spots
+        while(healthAmountInLevel > 0)
         {
-
+            int randomNum2 = Random.Range(0, spawnsToPlayer.Length);
+            
+            if (!placementCheck[randomNum2])
+            {
+                Debug.Log("Spawned a thing");
+                placementCheck[randomNum2] = true;
+                ObjectPooler.instance.SpawnFromPool("Med Kits", spawnsToPlayer[randomNum2].position, Quaternion.identity);
+                healthAmountInLevel--;
+            }
         }
     }
 }
