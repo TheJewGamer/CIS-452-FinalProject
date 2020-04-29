@@ -185,33 +185,33 @@ public class HealthStatus : MonoBehaviour, ISubject
         if(Stats.MedicalSuppliesCount > 0)
         {
             //which companion
-            if(input.companion1 && Stats.Companion1Health < Stats.MaxFuel && !Stats.Companion1Dead)
+            if(input.companion1 && Stats.Companion1Health < Stats.MaxHealth && !Stats.Companion1Dead)
             {
-                Stats.Companion1Health = Stats.MaxFuel;
+                Stats.Companion1Health = Stats.MaxHealth;
                 Stats.MedicalSuppliesCount--;
 
                 //update observers
                 NotifyObservers();
             }
-            else if(input.companion2 && Stats.Companion2Health < Stats.MaxFuel && !Stats.Companion2Dead)
+            else if(input.companion2 && Stats.Companion2Health < Stats.MaxHealth && !Stats.Companion2Dead)
             {
-                Stats.Companion2Health = Stats.MaxFuel;
+                Stats.Companion2Health = Stats.MaxHealth;
                 Stats.MedicalSuppliesCount--;
 
                 //update observers
                 NotifyObservers();
             }
-            else if(input.companion3 && Stats.Companion3Health < Stats.MaxFuel && !Stats.Companion3Dead)
+            else if(input.companion3 && Stats.Companion3Health < Stats.MaxHealth && !Stats.Companion3Dead)
             {
-                Stats.Companion3Health = Stats.MaxFuel;
+                Stats.Companion3Health = Stats.MaxHealth;
                 Stats.MedicalSuppliesCount--;
 
                 //update observers
                 NotifyObservers();
             }
-            else if(input.companion4 && Stats.Companion4Health < Stats.MaxFuel && !Stats.Companion4Dead)
+            else if(input.companion4 && Stats.Companion4Health < Stats.MaxHealth && !Stats.Companion4Dead)
             {
-                Stats.Companion4Health++;
+                Stats.Companion4Health = Stats.MaxHealth;
                 Stats.MedicalSuppliesCount--;
 
                 //update observers

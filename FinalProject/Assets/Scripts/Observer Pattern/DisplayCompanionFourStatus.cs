@@ -28,7 +28,7 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
     {
         this.statusToDisplay = GetComponent<Text>().text;
         healthStatus.RegisterObserver(this);
-        healthbar.value = Stats.MaxHealth;
+        healthbar.value = Stats.Companion4Health;
 
         safeHouseAudioManager = GameObject.Find("Scripts").GetComponent<SafeHouseAudioManager>();
     }
@@ -90,7 +90,7 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
     {
         healthStatus.Healed(companion);
 
-        if(Stats.MedicalSuppliesCount > 0 && Stats.Companion4Health < 10)
+        if(Stats.MedicalSuppliesCount > 0 && Stats.Companion4Health < Stats.MaxHealth)
         {
             safeHouseAudioManager.PlayPlusButton();
         }

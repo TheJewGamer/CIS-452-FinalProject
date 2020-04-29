@@ -27,7 +27,7 @@ public class DisplayCompanionThreeStatus : MonoBehaviour, IObserver
     {
         this.statusToDisplay = GetComponent<Text>().text;
         healthStatus.RegisterObserver(this);
-        healthbar.value = Stats.MaxHealth;
+        healthbar.value = Stats.Companion3Health;
 
         safeHouseAudioManager = GameObject.Find("Scripts").GetComponent<SafeHouseAudioManager>();
     }
