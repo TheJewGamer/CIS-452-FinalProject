@@ -24,9 +24,4 @@ public class ProcGenFacade : MonoBehaviour
         spawnPositions.SetSpawnPoints();
         resourcePlacer.SpawnItems();
     }
-
-    public void StartSpawning()
-    {
-
-    }
 }
