@@ -69,7 +69,10 @@
     <Compile Include="Assets\Scripts\Decorator\iEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Facade Pattern\AudioFacade.cs" />
+    <Compile Include="Assets\Scripts\Facade Pattern\ProcGenFacade.cs" />
+    <Compile Include="Assets\Scripts\Facade Pattern\ResourcePlacer.cs" />
     <Compile Include="Assets\Scripts\Facade Pattern\SongCollection.cs" />
+    <Compile Include="Assets\Scripts\Facade Pattern\SpawnPositions.cs" />
     <Compile Include="Assets\Scripts\Factory\EnemyFactory.cs" />
     <Compile Include="Assets\Scripts\Factory\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Factory\SupplyFactory.cs" />
@@ -101,6 +104,7 @@
     <Compile Include="Assets\Scripts\STD\EnemyStates.cs" />
     <Compile Include="Assets\Scripts\STD\ExplodingState.cs" />
     <Compile Include="Assets\Scripts\STD\IdleState.cs" />
+    <Compile Include="Assets\Scripts\SafeHouseAudioManager.cs" />
     <Compile Include="Assets\Scripts\Stats.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\Scripts\TutScripts\DummyController.cs" />
