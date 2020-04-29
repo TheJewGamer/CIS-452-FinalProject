@@ -66,6 +66,8 @@ public class EnemyControllerSTD : MonoBehaviour
                 player = GameObject.Find("PlayerComp1").transform;
                 break;
         }
+
+        currentState.StopChasing();
     }
 
     // Update is called once per frame

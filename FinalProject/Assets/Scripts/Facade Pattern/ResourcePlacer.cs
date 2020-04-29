@@ -10,6 +10,8 @@ public class ResourcePlacer : MonoBehaviour
 
     public int healthAmountInLevel = 1;
 
+    public EnemyFactory enemyFactory;
+
     
     public void SpawnItems()
     {
@@ -67,7 +69,7 @@ public class ResourcePlacer : MonoBehaviour
             }
         }
 
-        //spawn some enemies in the remaining spots
+        //spawn some medits
         while(healthAmountInLevel > 0)
         {
             int randomNum2 = Random.Range(0, spawnsToPlayer.Length);
@@ -78,6 +80,23 @@ public class ResourcePlacer : MonoBehaviour
                 placementCheck[randomNum2] = true;
                 ObjectPooler.instance.SpawnFromPool("Med Kits", spawnsToPlayer[randomNum2].position, Quaternion.identity);
                 healthAmountInLevel--;
+            }
+        }
+
+        //spawn enemies in the reamaining spots
+
+        for(int i = 0; i < placementCheck.Length; i ++)
+        {
+            if (!placementCheck[i])
+            {
+                int RandomNum = Random.Range(0,4);
+
+                if (RandomNum > 1)
+                {
+                    placementCheck[i] = true;
+                    GameObject newEnemy = enemyFactory.CreateEnemy("ExplodingEnemy");
+                    newEnemy.transform.position = spawnsToPlayer[i].position;
+                }
             }
         }
     }

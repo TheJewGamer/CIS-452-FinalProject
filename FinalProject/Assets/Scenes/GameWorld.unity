@@ -6591,12 +6591,12 @@ PrefabInstance:
     - target: {fileID: 5695826719537635037, guid: 263e8fbf83900f7458627cab878ab7d5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.279491
+      value: 6.42
       objectReference: {fileID: 0}
     - target: {fileID: 5695826719537635037, guid: 263e8fbf83900f7458627cab878ab7d5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.1305847
+      value: -3.91
       objectReference: {fileID: 0}
     - target: {fileID: 5695826719537635037, guid: 263e8fbf83900f7458627cab878ab7d5,
         type: 3}
@@ -20506,8 +20506,13 @@ PrefabInstance:
     - target: {fileID: 2830181264448286039, guid: 11b5e979c72654cccaee48b27c4c6346,
         type: 3}
       propertyPath: fuelAmountInLevel
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2830181264448286039, guid: 11b5e979c72654cccaee48b27c4c6346,
+        type: 3}
+      propertyPath: enemyFactory
+      value: 
+      objectReference: {fileID: 1715581131}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11b5e979c72654cccaee48b27c4c6346, type: 3}
 --- !u!4 &1715581129 stripped
@@ -20516,6 +20521,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1715581128}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1715581130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2830181264448286037, guid: 11b5e979c72654cccaee48b27c4c6346,
+    type: 3}
+  m_PrefabInstance: {fileID: 1715581128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1715581131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715581130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413aa018debbec042b538f3cb78c5cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1721862122
 GameObject:
   m_ObjectHideFlags: 0

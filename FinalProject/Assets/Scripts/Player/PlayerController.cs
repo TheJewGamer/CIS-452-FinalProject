@@ -285,7 +285,8 @@ public class PlayerController : MonoBehaviour
                 }
 
                 //destroy pickup
-                Destroy(other.gameObject);
+                //Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
 
                 //update text
                 inventoryCountText.text = totalPickUpCount.ToString();
@@ -327,7 +328,8 @@ public class PlayerController : MonoBehaviour
                 }
 
                 //destroy pickup
-                Destroy(other.gameObject);
+                //Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
 
                 //update text
                 inventoryCountText.text = totalPickUpCount.ToString();
@@ -369,7 +371,8 @@ public class PlayerController : MonoBehaviour
                 }
 
                 //destroy pickup
-                Destroy(other.gameObject);
+                other.gameObject.SetActive(false);
+                //Destroy(other.gameObject);
 
                 //update text
                 inventoryCountText.text = totalPickUpCount.ToString();

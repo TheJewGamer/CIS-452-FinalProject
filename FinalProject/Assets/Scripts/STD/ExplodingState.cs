@@ -52,6 +52,6 @@ public class ExplodingState : EnemyStates
         }
 
         //remove enemy
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 }
