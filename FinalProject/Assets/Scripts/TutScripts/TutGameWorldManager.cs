@@ -24,6 +24,7 @@ public class TutGameWorldManager : MonoBehaviour
     public GameObject prompt7;
     public GameObject prompt8;
     public GameObject prompt9;
+    public GameObject prompt10;
 
     //gameobjects
     public Transform player;
@@ -35,11 +36,13 @@ public class TutGameWorldManager : MonoBehaviour
     public GameObject prompt1Blocker;
     public GameObject prompt2Blocker;
     public GameObject prompt3Blocker;
-    public GameObject prompt8Blocker;
+    public GameObject prompt9Blocker;
 
     //misc
     private int promptIndex;
     public GameObject safeHouseMenu;
+    private bool prompt8Waited;
+    private bool prompt9Waited;
 
 
     // Start is called before the first frame update
@@ -55,10 +58,13 @@ public class TutGameWorldManager : MonoBehaviour
         prompt7.SetActive(false);
         prompt8.SetActive(false);
         prompt9.SetActive(false);
+        prompt10.SetActive(false);
 
         //set
         promptIndex = 1;
         Weapon.Ammo = 0;
+        prompt8Waited = false;
+        prompt9Waited = false;
     }
 
     // Update is called once per frame
@@ -72,7 +78,7 @@ public class TutGameWorldManager : MonoBehaviour
                 prompt1.SetActive(true);
 
                 //check
-                if(Vector2.Distance(player.position, prompt1Target.position) <= .1f)
+                if(Vector2.Distance(player.position, prompt1Target.position) <= 1f)
                 {
                     //done 
                     prompt1.SetActive(false);
@@ -174,13 +180,32 @@ public class TutGameWorldManager : MonoBehaviour
                 prompt8.SetActive(true);
 
                 //call
-                StartCoroutine(Prompt8Wait());
+                if(!prompt8Waited)
+                {
+                    prompt8Waited = true;
+                    StartCoroutine(Prompt8Wait());
+                }
+                
                 break;
             //prompt 9
             case 9:
                 //set active
                 prompt9.SetActive(true);
+                
+                //call
+                if(!prompt9Waited)
+                {
+                    prompt9Waited = true;
+                    StartCoroutine(Prompt9Wait());
+                }
+                
                 break;
+
+            //prompt 10
+            case 10:
+                prompt10.SetActive(true);
+                break;
+            
             default:
                 break;
         }
@@ -188,11 +213,20 @@ public class TutGameWorldManager : MonoBehaviour
 
     private IEnumerator Prompt8Wait()
     {
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(8);
 
         //done
         prompt8.SetActive(false);
-        prompt8Blocker.SetActive(false);
+        promptIndex++;
+    }
+
+    private IEnumerator Prompt9Wait()
+    {
+        yield return new WaitForSecondsRealtime(8);
+
+        //done
+        prompt9.SetActive(false);
+        prompt9Blocker.SetActive(false);
         promptIndex++;
     }
 

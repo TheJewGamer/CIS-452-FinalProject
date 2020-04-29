@@ -252,11 +252,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Ammo")
         {
 
-            songCollection.PlayItemPickUp();
-
             //space check
             if (totalPickUpCount < MAX_PICKUP_COUNT)
             {
+                //audio
+                songCollection.PlayItemPickUp();
+
                 //inc pickup count
                 totalPickUpCount++;
                 ammoSupplyCount++;
@@ -294,12 +295,12 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.tag == "Health")
         {
-
-            songCollection.PlayItemPickUp();
-
             //space check
             if (totalPickUpCount < MAX_PICKUP_COUNT)
             {
+                //audio
+                songCollection.PlayItemPickUp();
+
                 //inc pickup count
                 totalPickUpCount++;
                 medicalSupplyCount++;
@@ -337,12 +338,12 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.tag == "Gas")
         {
-
-            songCollection.PlayItemPickUp(); songCollection.PlayItemPickUp();
-
             //space check
             if (totalPickUpCount < MAX_PICKUP_COUNT)
             {
+                //audio
+                songCollection.PlayItemPickUp();
+
                 //inc pickup count
                 totalPickUpCount++;
                 fuelSupplyCount++;
