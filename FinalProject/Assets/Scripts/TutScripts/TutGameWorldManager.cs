@@ -213,7 +213,7 @@ public class TutGameWorldManager : MonoBehaviour
 
     private IEnumerator Prompt8Wait()
     {
-        yield return new WaitForSecondsRealtime(8);
+        yield return new WaitForSecondsRealtime(4);
 
         //done
         prompt8.SetActive(false);
@@ -222,7 +222,7 @@ public class TutGameWorldManager : MonoBehaviour
 
     private IEnumerator Prompt9Wait()
     {
-        yield return new WaitForSecondsRealtime(8);
+        yield return new WaitForSecondsRealtime(4);
 
         //done
         prompt9.SetActive(false);
