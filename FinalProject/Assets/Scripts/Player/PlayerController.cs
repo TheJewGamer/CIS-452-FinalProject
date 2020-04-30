@@ -548,7 +548,7 @@ public class PlayerController : MonoBehaviour
         bool dead = false;
 
         //check to see if dead
-        if (health == 0)
+        if (health <= 0)
         {
             dead = true;
         }

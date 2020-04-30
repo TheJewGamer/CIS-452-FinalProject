@@ -18,12 +18,34 @@ public class HealthStatus : MonoBehaviour, ISubject
     public LevelLoader loader;
     public GameObject winMenu;
     public GameObject loseMenu;
+    public SafeHouseAudioManager safeHouseAudioManager;
+    public GameObject[] AmmoAddPrompts;
+    public GameObject[] AmmoSubPrompts;
+    public GameObject[] MedicalPrompts;
+    public GameObject[] HealthPrompts;
+    public GameObject fuelPrompt;
+    public GameObject runnerPrompt;
 
     private void Start()
     {
         //hide menus
         winMenu.SetActive(false);
         loseMenu.SetActive(false);
+
+        //hide prompts (Note this assumes that ammo and medical prompts are the same length)
+        for(int i = 0; i < AmmoAddPrompts.Length; i++)
+        {
+            AmmoAddPrompts[i].SetActive(false);
+            MedicalPrompts[i].SetActive(false);
+            AmmoSubPrompts[i].SetActive(false);
+            HealthPrompts[i].SetActive(false);
+        }
+
+        fuelPrompt.SetActive(false);
+        runnerPrompt.SetActive(false);
+
+        //reset active runner
+        Stats.ActiveRunner = 0;
 
         //escape button
         CanEscape();
@@ -128,54 +150,117 @@ public class HealthStatus : MonoBehaviour, ISubject
                 Stats.Companion4Ammo++;
                 Stats.AmmoSuppliesCount--;
             }
-            else
-            {
-                Debug.Log("Error on adding ammo");
-            }
+
+            //play sound
+            safeHouseAudioManager.PlayPlusButton();
 
             //update observers
             NotifyObservers();
         }
-        else
+        else if(Stats.AmmoSuppliesCount == 0)
         {
-            //no ammo
+            //which companion
+            if(input.companion1)
+            {
+                StartCoroutine(ShowPrompt(AmmoAddPrompts[0]));
+            }
+            else if(input.companion2)
+            {
+                StartCoroutine(ShowPrompt(AmmoAddPrompts[1]));
+            }
+            else if(input.companion3)
+            {
+                StartCoroutine(ShowPrompt(AmmoAddPrompts[2]));
+            }
+            else if(input.companion4)
+            {
+                StartCoroutine(ShowPrompt(AmmoAddPrompts[3]));
+            }
         }
     }
 
     public void AmmoSubtracted(Companion input)
     {
-        //check to see if we have ammo
-        if(input.companion1 && Stats.Companion1Ammo > 0)
+        //which companion
+        if(input.companion1)
         {
-            Stats.Companion1Ammo--;
-            Stats.AmmoSuppliesCount++;
+            //check to see if companion has ammo 
+            if(Stats.Companion1Ammo > 0)
+            {
+                Stats.Companion1Ammo--;
+                Stats.AmmoSuppliesCount++;
 
-            //update observers
-            NotifyObservers();
+                //play sound
+                safeHouseAudioManager.PlayMinusButton();
+
+                //update observers
+                NotifyObservers();
+            }
+            //no ammo show prompt
+            else
+            {
+                StartCoroutine(ShowPrompt(AmmoSubPrompts[0]));
+            }   
         }
-        else if(input.companion2 && Stats.Companion2Ammo > 0)
+        else if(input.companion2)
         {
-            Stats.Companion2Ammo--;
-            Stats.AmmoSuppliesCount++;
+            //check to see if companion has ammo
+            if(Stats.Companion2Ammo > 0)
+            {
+                Stats.Companion2Ammo--;
+                Stats.AmmoSuppliesCount++;
 
-            //update observers
-            NotifyObservers();
+                //play sound
+                safeHouseAudioManager.PlayMinusButton();
+
+                //update observers
+                NotifyObservers();
+            }
+            //no ammo show prompt
+            else
+            {
+                StartCoroutine(ShowPrompt(AmmoSubPrompts[1]));
+            }
         }
-        else if(input.companion3 && Stats.Companion3Ammo > 0)
+        else if(input.companion3)
         {
-            Stats.Companion3Ammo--;
-            Stats.AmmoSuppliesCount++;
+            //check to see if companion has ammo
+            if(Stats.Companion3Ammo > 0)
+            {
+                Stats.Companion3Ammo--;
+                Stats.AmmoSuppliesCount++;
 
-            //update observers
-            NotifyObservers();
+                //play sound
+                safeHouseAudioManager.PlayMinusButton();
+
+                //update observers
+                NotifyObservers();
+            }
+            //no ammo show prompt
+            else
+            {
+                StartCoroutine(ShowPrompt(AmmoSubPrompts[2]));
+            }
         }
         else if(input.companion4 && Stats.Companion4Ammo > 0)
         {
-            Stats.Companion4Ammo--;
-            Stats.AmmoSuppliesCount++;
+            //check to see if companion has ammo
+            if(Stats.Companion4Ammo > 0)
+            {
+                Stats.Companion4Ammo--;
+                Stats.AmmoSuppliesCount++;
 
-            //update observers
-            NotifyObservers();
+                //play sound
+                safeHouseAudioManager.PlayMinusButton();
+
+                //update observers
+                NotifyObservers();
+            }
+            //no ammo show prompt
+            else
+            {
+                StartCoroutine(ShowPrompt(AmmoSubPrompts[3]));
+            }
         }
     }
 
@@ -185,37 +270,114 @@ public class HealthStatus : MonoBehaviour, ISubject
         if(Stats.MedicalSuppliesCount > 0)
         {
             //which companion
-            if(input.companion1 && Stats.Companion1Health < Stats.MaxHealth && !Stats.Companion1Dead)
+            if(input.companion1)
             {
-                Stats.Companion1Health = Stats.MaxHealth;
-                Stats.MedicalSuppliesCount--;
+                //make sure not at full health
+                if(Stats.Companion1Health < Stats.MaxHealth)
+                {
+                    //set health and update supplies
+                    Stats.Companion1Health = Stats.MaxHealth;
+                    Stats.MedicalSuppliesCount--;
 
-                //update observers
-                NotifyObservers();
+                    //play sound
+                    safeHouseAudioManager.PlayPlusButton();
+
+                    //update observers
+                    NotifyObservers();
+                }
+                //at full health
+                else
+                {
+                    //prompt
+                    StartCoroutine(ShowPrompt(HealthPrompts[0]));
+                }
             }
-            else if(input.companion2 && Stats.Companion2Health < Stats.MaxHealth && !Stats.Companion2Dead)
+            else if(input.companion2)
             {
-                Stats.Companion2Health = Stats.MaxHealth;
-                Stats.MedicalSuppliesCount--;
+                //make sure not at full health
+                if(Stats.Companion2Health < Stats.MaxHealth)
+                {
+                    //set health and update supplies
+                    Stats.Companion2Health = Stats.MaxHealth;
+                    Stats.MedicalSuppliesCount--;
 
-                //update observers
-                NotifyObservers();
+                    //play sound
+                    safeHouseAudioManager.PlayPlusButton();
+
+                    //update observers
+                    NotifyObservers();
+                }
+                //at full health
+                else
+                {
+                    //prompt
+                    StartCoroutine(ShowPrompt(HealthPrompts[1]));
+                }
             }
-            else if(input.companion3 && Stats.Companion3Health < Stats.MaxHealth && !Stats.Companion3Dead)
+            else if(input.companion3)
             {
-                Stats.Companion3Health = Stats.MaxHealth;
-                Stats.MedicalSuppliesCount--;
+                //make sure not at full health
+                if(Stats.Companion3Health < Stats.MaxHealth)
+                {
+                    //set health and update supplies
+                    Stats.Companion3Health = Stats.MaxHealth;
+                    Stats.MedicalSuppliesCount--;
 
-                //update observers
-                NotifyObservers();
+                    //play sound
+                    safeHouseAudioManager.PlayPlusButton();
+
+                    //update observers
+                    NotifyObservers();
+                }
+                //at full health
+                else
+                {
+                    //prompt
+                    StartCoroutine(ShowPrompt(HealthPrompts[2]));
+                }
             }
-            else if(input.companion4 && Stats.Companion4Health < Stats.MaxHealth && !Stats.Companion4Dead)
+            else if(input.companion4)
             {
-                Stats.Companion4Health = Stats.MaxHealth;
-                Stats.MedicalSuppliesCount--;
+                //make sure not at full health
+                if(Stats.Companion4Health < Stats.MaxHealth)
+                {
+                    //set health and update supplies
+                    Stats.Companion4Health = Stats.MaxHealth;
+                    Stats.MedicalSuppliesCount--;
 
-                //update observers
-                NotifyObservers();
+                    //play sound
+                    safeHouseAudioManager.PlayPlusButton();
+
+                    //update observers
+                    NotifyObservers();
+                }
+                //at full health
+                else
+                {
+                    //prompt
+                    StartCoroutine(ShowPrompt(HealthPrompts[3]));
+                }
+            }
+        }
+        //no supplies
+        else if(Stats.MedicalSuppliesCount == 0)
+        {
+            //which companion
+            if(input.companion1)
+            {
+                StartCoroutine(ShowPrompt(MedicalPrompts[0]));
+            }
+            else if(input.companion2)
+            {
+                StartCoroutine(ShowPrompt(MedicalPrompts[1]));
+            }
+            else if(input.companion3)
+            {
+                StartCoroutine(ShowPrompt(MedicalPrompts[2]));
+            }
+            else if(input.companion4)
+            {
+                StartCoroutine(ShowPrompt(MedicalPrompts[3]));
             }
         }
     }
@@ -238,6 +400,12 @@ public class HealthStatus : MonoBehaviour, ISubject
                 //check to see if we can escape
                 CanEscape();
             }
+        }
+        //no fuel
+        else if(Stats.FuelSuppliesCount == 0)
+        {
+            //prompt
+            StartCoroutine(ShowPrompt(fuelPrompt));
         }
     }
 
@@ -274,6 +442,11 @@ public class HealthStatus : MonoBehaviour, ISubject
             //load gameworld
             loader.StartCoroutine("FadeToBlack", "GameWorld");
         }
+        else if(Stats.ActiveRunner == 0)
+        {
+            //prompt
+            StartCoroutine(ShowPrompt(runnerPrompt));
+        }
     }
 
     public void SetRunner(Companion input)
@@ -294,10 +467,6 @@ public class HealthStatus : MonoBehaviour, ISubject
         {
             Stats.ActiveRunner = 4;
         }
-        else
-        {
-            Debug.Log("Error on setting active runner");
-        }
 
         NotifyObservers();
     }
@@ -309,5 +478,17 @@ public class HealthStatus : MonoBehaviour, ISubject
             //game over
             loseMenu.SetActive(true);
         }
+    }
+
+    private IEnumerator ShowPrompt(GameObject input)
+    {
+        //enable
+        input.SetActive(true);
+
+        //wait
+        yield return new WaitForSecondsRealtime(3);
+
+        //disable
+        input.SetActive(false);
     }
 }

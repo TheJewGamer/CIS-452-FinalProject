@@ -8,11 +8,11 @@
 public static class Stats
 {
     //variables
-    private static string companion1Name = null;
-    private static string companion2Name = null;
-    private static string companion3Name = null;
-    private static string companion4Name = null;
-    private static string carName = null;
+    private static string companion1Name = "";
+    private static string companion2Name = "";
+    private static string companion3Name = "";
+    private static string companion4Name = "";
+    private static string carName = "";
 
     private static float companion1Health = 10;
     private static float companion2Health = 10;

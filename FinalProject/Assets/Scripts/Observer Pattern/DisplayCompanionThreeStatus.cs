@@ -19,8 +19,7 @@ public class DisplayCompanionThreeStatus : MonoBehaviour, IObserver
     public Text companionName;
     public Text ammoCount;
     public GameObject[] objectsToHide;
-
-    public SafeHouseAudioManager safeHouseAudioManager;
+    public Image compImage;
 
     // Start is called before the first frame update
     private void Start()
@@ -28,8 +27,6 @@ public class DisplayCompanionThreeStatus : MonoBehaviour, IObserver
         this.statusToDisplay = GetComponent<Text>().text;
         healthStatus.RegisterObserver(this);
         healthbar.value = Stats.Companion3Health;
-
-        safeHouseAudioManager = GameObject.Find("Scripts").GetComponent<SafeHouseAudioManager>();
     }
     public void UpdateData(List<Companion> companions)
     {
@@ -52,45 +49,32 @@ public class DisplayCompanionThreeStatus : MonoBehaviour, IObserver
         ammoCount.text = Stats.Companion3Ammo.ToString();
 
         //check if dead
-        if(Stats.Companion3Health == 0)
+        if(Stats.Companion3Dead)
         {
             //hide buttons and ammo
             foreach(GameObject item in objectsToHide)
             {
                 item.SetActive(false);
             }
+
+            //make image red
+            compImage.color = Color.red;
         }
     }
 
     public void Comp3AddAmmo()
     {
         healthStatus.AmmoAdded(companion);
-
-        if (Stats.AmmoSuppliesCount > 0)
-        {
-            safeHouseAudioManager.PlayPlusButton();
-        }
-
     }
 
     public void Comp3SubtractAmmo()
     {
         healthStatus.AmmoSubtracted(companion);
-
-        if (Stats.Companion2Ammo > 0)
-        {
-            safeHouseAudioManager.PlayMinusButton();
-        }
     }
 
     public void Comp3Heal()
     {
         healthStatus.Healed(companion);
-
-        if (Stats.MedicalSuppliesCount > 0 && Stats.Companion3Health < 10)
-        {
-            safeHouseAudioManager.PlayPlusButton();
-        }
     }
 
     public void Comp3Runner()

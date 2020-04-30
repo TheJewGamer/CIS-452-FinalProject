@@ -20,8 +20,7 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
     public Text companionName;
     public Text ammoCount;
     public GameObject[] objectsToHide;
-
-    public SafeHouseAudioManager safeHouseAudioManager;
+    public Image compImage;
 
     // Start is called before the first frame update
     private void Start()
@@ -29,8 +28,6 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
         this.statusToDisplay = GetComponent<Text>().text;
         healthStatus.RegisterObserver(this);
         healthbar.value = Stats.Companion4Health;
-
-        safeHouseAudioManager = GameObject.Find("Scripts").GetComponent<SafeHouseAudioManager>();
     }
 
     public void UpdateData(List<Companion> companions)
@@ -39,7 +36,7 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
 
         if (companion.companion4)
         {
-            this.statusToDisplay = companion.companionName + " Status: " + companion.statusMessage; //companion.statusMessage;
+            this.statusToDisplay = companion.companionName + " Status: " + companion.statusMessage;
             this.companionName.text = companion.companionName;
 
         }
@@ -55,46 +52,32 @@ public class DisplayCompanionFourStatus : MonoBehaviour, IObserver
         ammoCount.text = Stats.Companion4Ammo.ToString();
 
         //check if dead
-        if(Stats.Companion4Health == 0)
+        if(Stats.Companion4Dead)
         {
             //hide buttons and ammo
             foreach(GameObject item in objectsToHide)
             {
                 item.SetActive(false);
             }
+
+            //make image red
+            compImage.color = Color.red;
         }
     }
 
     public void Comp4AddAmmo()
     {
         healthStatus.AmmoAdded(companion);
-
-        if(Stats.AmmoSuppliesCount > 0)
-        {
-            safeHouseAudioManager.PlayPlusButton();
-        }
-
     }
 
     public void Comp4SubtractAmmo()
     {
         healthStatus.AmmoSubtracted(companion);
-
-        if (Stats.Companion2Ammo > 0)
-        {
-            safeHouseAudioManager.PlayMinusButton();
-        }
     }
 
     public void Comp4Heal()
     {
         healthStatus.Healed(companion);
-
-        if(Stats.MedicalSuppliesCount > 0 && Stats.Companion4Health < Stats.MaxHealth)
-        {
-            safeHouseAudioManager.PlayPlusButton();
-        }
-
     }
 
     public void Comp4Runner()
