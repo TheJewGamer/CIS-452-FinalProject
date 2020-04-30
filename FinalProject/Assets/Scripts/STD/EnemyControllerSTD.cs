@@ -22,7 +22,8 @@ public class EnemyControllerSTD : MonoBehaviour
     private const float EXPLOADING_DISTANCE_ACTIVATION = 1f;
     public int damage = 4;
     private bool inRange;
-    public Sprite explodingSprite;
+    private Sprite explodingSprite;
+    private Sprite normalSprite;
 
     // Reference Variable to the zombie and player sounds.
     public SongCollection songCollection;
@@ -46,6 +47,7 @@ public class EnemyControllerSTD : MonoBehaviour
         currentState = idleState;
         inRange = false;
         explodingSprite = this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+        normalSprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
 
         //get player
         switch (Stats.ActiveRunner)
@@ -101,6 +103,20 @@ public class EnemyControllerSTD : MonoBehaviour
         else
         {
             OutOfRange();
+        }
+
+        //check to see if exploading
+        if(currentState == explodingState)
+        {
+            //switch sprite
+            if(this.gameObject.GetComponent<SpriteRenderer>().sprite == explodingSprite)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = normalSprite;
+            }
+            else
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = explodingSprite;
+            }
         }
     }
 

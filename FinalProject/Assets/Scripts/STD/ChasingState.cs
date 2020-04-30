@@ -18,7 +18,6 @@ public class ChasingState : EnemyStates
     }
     public override void StartChasing()
     {
-        //Debug.Log("Already chasing the player");
     }
     public override void StopChasing()
     {

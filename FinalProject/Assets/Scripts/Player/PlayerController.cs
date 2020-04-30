@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fuelImage5;
     public LevelLoader loader;
     public Text inventoryCountText;
+    public GameObject inventoryFull;
 
 
     // Reference Variable to the zombie and player sounds.
@@ -107,6 +108,7 @@ public class PlayerController : MonoBehaviour
         fuelImage3.SetActive(false);
         fuelImage4.SetActive(false);
         fuelImage5.SetActive(false);
+        inventoryFull.SetActive(false);
 
         //get active runner and set health
         switch (Stats.ActiveRunner)
@@ -241,7 +243,7 @@ public class PlayerController : MonoBehaviour
         //enable
         hitEffect.SetActive(true);
 
-        yield return new WaitForSeconds(.05f);
+        yield return new WaitForSeconds(.15f);
 
         hitEffect.SetActive(false);
     }
@@ -286,11 +288,14 @@ public class PlayerController : MonoBehaviour
                 }
 
                 //destroy pickup
-                //Destroy(other.gameObject);
                 other.gameObject.SetActive(false);
 
                 //update text
                 inventoryCountText.text = totalPickUpCount.ToString();
+            }
+            else
+            {
+                StartCoroutine(Full());
             }
         }
         else if (other.gameObject.tag == "Health")
@@ -329,11 +334,14 @@ public class PlayerController : MonoBehaviour
                 }
 
                 //destroy pickup
-                //Destroy(other.gameObject);
                 other.gameObject.SetActive(false);
 
                 //update text
                 inventoryCountText.text = totalPickUpCount.ToString();
+            }
+            else
+            {
+                StartCoroutine(Full());
             }
         }
         else if (other.gameObject.tag == "Gas")
@@ -373,10 +381,13 @@ public class PlayerController : MonoBehaviour
 
                 //destroy pickup
                 other.gameObject.SetActive(false);
-                //Destroy(other.gameObject);
 
                 //update text
                 inventoryCountText.text = totalPickUpCount.ToString();
+            }
+            else
+            {
+                StartCoroutine(Full());
             }
         }
         else if (other.gameObject.tag == "Safehouse")
@@ -638,6 +649,18 @@ public class PlayerController : MonoBehaviour
         loader.StartCoroutine("FadeToBlack", "Safehouse");
     }
 
+    private IEnumerator Full()
+    {
+        //enable
+        inventoryFull.SetActive(true);
+
+        //wait
+        yield return new WaitForSeconds(.5f);
+
+        //turn off
+        inventoryFull.SetActive(false);
+    }
+
     public static int TotalPickUpCount
     {
         get
@@ -649,7 +672,6 @@ public class PlayerController : MonoBehaviour
             totalPickUpCount = value;
         }
     }
-
 }
 
 

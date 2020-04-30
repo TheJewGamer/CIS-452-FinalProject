@@ -162,7 +162,7 @@ public class Weapon : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
     }
 
-     private IEnumerator Empty()
+    private IEnumerator Empty()
     {
         //enable
         emptyText.SetActive(true);

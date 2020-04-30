@@ -22,6 +22,7 @@ public class GameWorldManager : MonoBehaviour
     //menu stuff
     public GameObject inventoryMenu;
     public Text pickupCount;
+    public GameObject inventoryFull;
 
     public GameObject ammoImage1;
     public GameObject ammoImage2;
@@ -59,9 +60,6 @@ public class GameWorldManager : MonoBehaviour
 
         //turn off menu
         safeHouseMenu.SetActive(false);
-
-        //start intro music
-       // audioManager.
 
          //add player script to right character
         switch (Stats.ActiveRunner)
@@ -115,9 +113,9 @@ public class GameWorldManager : MonoBehaviour
         activeComp.healthbar = this.healthbar;
         activeComp.loader = this.loader;
         activeComp.inventoryCountText = this.pickupCount;
+        activeComp.inventoryFull = this.inventoryFull;
 
         //start the spawning generation
-
         ProcGenFacade.instance.Generate();
     }
 
