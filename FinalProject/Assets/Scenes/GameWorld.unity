@@ -15976,7 +15976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factory: {fileID: 1351323278}
-  type: ExplodingEnemy
+  type: HeavyEnemy
   firerate: 4
   enemiesInGame: []
 --- !u!114 &1351323278
@@ -23198,11 +23198,11 @@ MonoBehaviour:
     prefab: {fileID: 1658647632116678407, guid: 0ee3798ee4cb09e418d7ea8a54f03b63,
       type: 3}
     size: 5
-  - tag: TemplateEnemy
+  - tag: HeavyEnemy
     prefab: {fileID: 5111388805567211684, guid: ff5e47028c90d2846991d9940aa2b726,
       type: 3}
     size: 10
-  - tag: TemplateEnemy
+  - tag: FatsEnemy
     prefab: {fileID: 6043360595852010712, guid: a0d3a1b3bc412c74985e335187d54460,
       type: 3}
     size: 10

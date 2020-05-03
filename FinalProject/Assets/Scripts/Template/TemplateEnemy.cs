@@ -60,6 +60,18 @@ public abstract class TemplatEnemy: MonoBehaviour
         return;
     }
 
+    public void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            //call
+            other.gameObject.GetComponent<PlayerController>().Attacked(damage);
+
+            //hide
+            this.gameObject.SetActive(false);
+        }    
+    }
+
     public abstract void SetSpeed();
     public abstract void SetDamage();
     public abstract void SetHealth();

@@ -39,13 +39,6 @@ public class ObjectPooler : MonoBehaviour
     }
     #endregion
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Fill the pools with inactive objects on Start()
     private void FillPoolsWithInactiveObjects()
     {
@@ -97,7 +90,7 @@ public class ObjectPooler : MonoBehaviour
         return objectToSpawn;
     }
 
-    // Used to spawn the supply objects from thier respective pools.
+    // Used to spawn the supply objects from their respective pools.
     public GameObject SpawnSuppliesFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         // Check to make sure the Dictionary contains the pool with the tag passed into SpawnFromPool

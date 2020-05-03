@@ -62,7 +62,6 @@ public class ResourcePlacer : MonoBehaviour
             
             if (!placementCheck[randomNum2])
             {
-                Debug.Log("Spawned a thing");
                 placementCheck[randomNum2] = true;
                 ObjectPooler.instance.SpawnFromPool("Ammo", spawnsToPlayer[randomNum2].position, Quaternion.identity);
                 ammoAmountInLevel--;
@@ -76,7 +75,6 @@ public class ResourcePlacer : MonoBehaviour
             
             if (!placementCheck[randomNum2])
             {
-                Debug.Log("Spawned a thing");
                 placementCheck[randomNum2] = true;
                 ObjectPooler.instance.SpawnFromPool("Med Kits", spawnsToPlayer[randomNum2].position, Quaternion.identity);
                 healthAmountInLevel--;

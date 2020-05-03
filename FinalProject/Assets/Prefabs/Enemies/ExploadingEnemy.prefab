@@ -92,9 +92,6 @@ GameObject:
   - component: {fileID: 5695826719537635037}
   - component: {fileID: 1976235177}
   - component: {fileID: 1976235173}
-  - component: {fileID: 1976235174}
-  - component: {fileID: 1976235175}
-  - component: {fileID: 1976235176}
   - component: {fileID: 1619038590}
   m_Layer: 0
   m_Name: ExploadingEnemy
@@ -187,44 +184,7 @@ MonoBehaviour:
   EXPLODING_SPEED: 0
   EXPLOADING_DAMAGE_RANGE: 2.5
   damage: 4
-  explodingSprite: {fileID: 0}
   songCollection: {fileID: 0}
---- !u!114 &1976235174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5695826719537635036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f2fc99d115f58242a54b39e9ea55ba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1976235175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5695826719537635036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec9522c23e4a56e48881fff847c97e65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1976235176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5695826719537635036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53af827cc2543f45a354dc4e7f2f9d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &1619038590
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -13,20 +13,11 @@ public class EnemySpawner : MonoBehaviour
 {
 
     public EnemyFactory factory;
-
     private GameObject enemy;
     public string type;
     public float firerate;
     private float nextFire;
-
     public GameObject[] enemiesInGame;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
 
 
     // Update is called once per frame
@@ -36,12 +27,22 @@ public class EnemySpawner : MonoBehaviour
 
         if(Time.time > nextFire && enemiesInGame.Length <= 5)
         {
+            Debug.Log("exp");
             nextFire = Time.time + firerate;
             type = "ExplodingEnemy";
             enemy = factory.CreateEnemy(type);
 
             enemy.transform.position = transform.position;
-           // Instantiate(enemy, gameObject.transform.position, gameObject.transform.rotation); //put the object pooler here instead of the instantiation
+        }
+
+        if(Time.time > nextFire && enemiesInGame.Length <= 5)
+        {
+            Debug.Log("heavy");
+            nextFire = Time.time + firerate;
+            type = "HeavyEnemy";
+            enemy = factory.CreateEnemy(type);
+
+            enemy.transform.position = transform.position;
         }
     }
 

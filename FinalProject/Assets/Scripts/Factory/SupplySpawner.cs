@@ -19,14 +19,6 @@ public class SupplySpawner : MonoBehaviour
     public float firerate;
     private float nextFire;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-
-
     // Update is called once per frame
     void Update()
     {
