@@ -31,6 +31,7 @@ public class TutSafehouseManager : MonoBehaviour
     public GameObject prompt16;
     public GameObject prompt17;
     public GameObject prompt18;
+    public GameObject prompt19;
     public LevelLoader loader;
     private int currentPromptIndex;
 
@@ -190,6 +191,13 @@ public class TutSafehouseManager : MonoBehaviour
                 prompt18.SetActive(true);
                 break;
             case 19:
+                //disable
+                prompt18.SetActive(false);
+
+                //active
+                prompt19.SetActive(true);
+                break;
+            case 20:
                 //load next tut level
                 loader.StartCoroutine("FadeToBlack", "TutGameworld");
                 break;

@@ -21,16 +21,28 @@ public class Weapon : MonoBehaviour
     public Sprite pistol;
     public Sprite knife;
     public Sprite muzzelFlash;
+    public Sprite knifeAttack;
     public Text ammoText;
+    public Text knifeReady;
     private bool melee;
     public static int ammo;
+    public static bool knifeEquipped;
     public GameObject emptyText;
+    public GameObject pistolHud;
+    public GameObject knifeHud;
+    public GameObject tiredText;
 
     private void Start() 
     {
+        //set up
         this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
+        pistolHud.SetActive(true);
+        knifeHud.SetActive(false);
         melee = false;
+        knifeEquipped = false;
         emptyText.SetActive(false);
+        tiredText.SetActive(false);
+
 
         //get active runner and set ammo
         switch (Stats.ActiveRunner)
@@ -63,13 +75,30 @@ public class Weapon : MonoBehaviour
 
         //hud update
         ammoText.text = ammo.ToString();
+        knifeReady.text = CanStab();
     }
 
     void OnEnable() 
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
+        //check to see switch weapon is equipped
+        if(KnifeEquipped)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = knife;
+            pistolHud.SetActive(false);
+            knifeHud.SetActive(true);
+        }
+        else
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
+            knifeHud.SetActive(false);
+            pistolHud.SetActive(true);
+        }
+        
+        //reset
         melee = false;
         emptyText.SetActive(false);
+        tiredText.SetActive(false);
+        knifeReady.text = CanStab();
     }
 
     private void OnDisable() 
@@ -88,62 +117,96 @@ public class Weapon : MonoBehaviour
             transform.right= direction;
 
             //shoot
-            if(Input.GetButtonDown("Shoot") == true && !melee)
+            if(Input.GetButtonDown("Shoot") == true)
             {
-                //check to make sure we have ammo
-                if(ammo > 0)
+                //check to see if knife if equipped
+                if(KnifeEquipped)
                 {
-
-                    songCollection.PlayPistolFire();
-
-                    //feedback
-                    StartCoroutine(Flash());
-
-                    //dec ammo
-                    ammo--;
-
-                    //update hud
-                    ammoText.text = ammo.ToString();
-
-                    //raytrace
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction);
-
-                    if(hit.collider !=null)
+                    //check to see if can attack
+                    if(!melee)
                     {
-                        //enemy hit
-                        if(hit.collider.gameObject.CompareTag("Enemy") == true)
+                        //anim/wait
+                        StartCoroutine(Stab());
+
+                        //raytrace
+                        RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction, 1);
+
+                        if(hit.collider !=null)
                         {
-                            //notify
-                            hit.transform.SendMessageUpwards("Attacked");
+                            //enemy hit
+                            if(hit.collider.gameObject.CompareTag("Enemy") == true)
+                            {
+                                //notify
+                                hit.transform.SendMessageUpwards("Attacked");
+                            }
                         }
                     }
+                    else
+                    {
+                        //tired
+                        StartCoroutine(Tired());
+                    }
+                    
+                }
+                //pistol is equipped
+                else if(!knifeEquipped)
+                {
+                    //check to make sure we have ammo
+                    if(ammo > 0)
+                    {
+
+                        songCollection.PlayPistolFire();
+
+                        //feedback
+                        StartCoroutine(Flash());
+
+                        //dec ammo
+                        ammo--;
+
+                        //update hud
+                        ammoText.text = ammo.ToString();
+
+                        //raytrace
+                        RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction);
+
+                        if(hit.collider !=null)
+                        {
+                            //enemy hit
+                            if(hit.collider.gameObject.CompareTag("Enemy") == true)
+                            {
+                                //notify
+                                hit.transform.SendMessageUpwards("Attacked");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        songCollection.PlayPistolOutOfAmmo();
+
+                        //no ammo prompt
+                        StartCoroutine(Empty());
+                    }
+                }   
+            }
+            //switch weapon
+            else if(Input.GetButtonDown("Melee") == true && !melee)
+            {
+                //check if knife is equipped
+                if(knifeEquipped)
+                {
+                    //switch to pistol
+                    knifeEquipped = false;
+                    this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
+                    pistolHud.SetActive(true);
+                    knifeHud.SetActive(false);
                 }
                 else
                 {
-
-                    songCollection.PlayPistolOutOfAmmo();
-
-                    //no ammo prompt
-                    StartCoroutine(Empty());
-                }
-                
-            }
-            else if(Input.GetButtonDown("Melee") == true)
-            {
-                //feedback
-                StartCoroutine(Knife());
-
-                //raytrace
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, this.direction, 2);
-
-                if(hit.collider !=null)
-                {
-                    //enemy hit
-                    if(hit.collider.gameObject.CompareTag("Enemy") == true)
-                    {
-                        //notify
-                        hit.transform.SendMessageUpwards("Attacked");
-                    }
+                    //switch to knife
+                    knifeEquipped = true;
+                    this.gameObject.GetComponent<SpriteRenderer>().sprite = knife;
+                    knifeHud.SetActive(true);
+                    pistolHud.SetActive(false);
                 }
             }
         }
@@ -174,18 +237,43 @@ public class Weapon : MonoBehaviour
         emptyText.SetActive(false);
     }
 
-    private IEnumerator Knife()
+    private IEnumerator Tired()
     {
         //enable
+        tiredText.SetActive(true);
+
+        yield return new WaitForSeconds(.1f);
+
+        //turn off
+        tiredText.SetActive(false);
+    }
+
+    private IEnumerator Stab()
+    {
+        //enable
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = knifeAttack;
         melee = true;
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = knife;
+        knifeReady.text = CanStab();
 
         //wait
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(2f);
 
         //revert
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = knife;
         melee = false;
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = pistol;
+        knifeReady.text = CanStab();
+    }
+
+    private string CanStab()
+    {
+        if(melee)
+        {
+            return "No";
+        }
+        else
+        {
+            return "Yes";
+        }
     }
 
     public static int Ammo
@@ -197,6 +285,18 @@ public class Weapon : MonoBehaviour
         set
         {
             ammo = value;
+        }
+    }
+
+    public static bool KnifeEquipped
+    {
+        get
+        {
+            return knifeEquipped;
+        }
+        set
+        {
+            knifeEquipped = value;
         }
     }
 }
