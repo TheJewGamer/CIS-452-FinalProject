@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Motorcyclist : Enemy
+public class Motorcyclist : iEnemy
 {
     private int armorValue = 3;
     public override void Attacked(GameObject player)

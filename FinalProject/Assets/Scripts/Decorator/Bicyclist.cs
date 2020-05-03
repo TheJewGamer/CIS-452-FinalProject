@@ -11,14 +11,14 @@ using UnityEngine;
 
 public class Bicyclist : ArmorDecorator
 {
-    public Enemy _thisEnemy;
+    public iEnemy _thisEnemy;
     private int armorValue = 2;
 
     private void Start()
     {
-        _thisEnemy = GetComponent<Enemy>();
+        _thisEnemy = GetComponent<iEnemy>();
     }
-    public int GetArmor(Enemy enemy)
+    public int GetArmor(iEnemy enemy)
     {
         return armorValue;
     }
