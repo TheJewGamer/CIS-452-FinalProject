@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/SafeHouse.unity
+- path: Assets/Scenes/TutorialLevels/TutSafehouse.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

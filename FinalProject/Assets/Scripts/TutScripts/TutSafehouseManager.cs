@@ -33,6 +33,8 @@ public class TutSafehouseManager : MonoBehaviour
     public GameObject prompt18;
     public GameObject prompt19;
     public LevelLoader loader;
+    public GameObject safehouseMenu;
+    public GameObject skipMenu;
     private int currentPromptIndex;
 
 
@@ -60,6 +62,10 @@ public class TutSafehouseManager : MonoBehaviour
         prompt15.SetActive(false);
         prompt16.SetActive(false);
         prompt17.SetActive(false);
+
+        //set up
+        safehouseMenu.SetActive(true);
+        skipMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -210,6 +216,18 @@ public class TutSafehouseManager : MonoBehaviour
     public void NextPrompt()
     {
         currentPromptIndex++;
+    }
+
+    public void OpenSkipMenu()
+    {
+        safehouseMenu.SetActive(false);
+        skipMenu.SetActive(true);
+    }
+
+    public void OpenSafehouseMenu()
+    {
+        skipMenu.SetActive(false);
+        safehouseMenu.SetActive(true);
     }
 
     public void SkipTutorial()
