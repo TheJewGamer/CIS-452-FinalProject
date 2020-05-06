@@ -92,7 +92,24 @@ public class ResourcePlacer : MonoBehaviour
                 if (RandomNum > 1)
                 {
                     placementCheck[i] = true;
-                    GameObject newEnemy = enemyFactory.CreateEnemy("ExplodingEnemy");
+
+                    GameObject newEnemy = null;
+
+                    float enemySelection = Random.Range(0f,1f);
+
+                    if (enemySelection < 0.3f)
+                    {
+                        newEnemy = enemyFactory.CreateEnemy("FastEnemy");
+                    }
+                    else if (enemySelection < 0.6f)
+                    {
+                        newEnemy = enemyFactory.CreateEnemy("HeavyEnemy");
+                    }
+                    else
+                    {
+                        newEnemy = enemyFactory.CreateEnemy("ExplodingEnemy");
+                    }
+
                     newEnemy.transform.position = spawnsToPlayer[i].position;
                 }
             }
