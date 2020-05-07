@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+    * Warren Guilies
+    * SafeHouseAudioManager.cs
+    * Final Project
+    * manages audio in the safehouse level
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

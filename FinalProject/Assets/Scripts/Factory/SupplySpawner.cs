@@ -1,7 +1,7 @@
 ﻿/*
  * CJ Green
  * SupplySpawner.cs
- * Final Project Part 2
+ * Final Project
  * Spawns supplies with random positions using an object pooler and a factory pattern
  */
 

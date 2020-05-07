@@ -1,7 +1,7 @@
 ﻿/*
  * Kevon Long
  * EnemySpawner.cs
- * Final Project Part 2
+ * Final Project
  * Spawns enemies using an object pooler and a factory pattern
  */
 

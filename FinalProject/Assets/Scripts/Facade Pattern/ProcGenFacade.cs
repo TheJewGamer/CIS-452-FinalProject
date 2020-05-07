@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+ * Warren Guilies
+ * ProcGenFacade.cs
+ * Final Project
+ * set up for spawning items 
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,8 +1,8 @@
 ﻿/*
  * Kevon Long
- * MonsterFactory.cs
- * Assignment #6
- * determines which monster to spawn
+ * EnemyFactory.cs
+ * Final Project
+ * determines which enemy to spawn
  */
 
 using System.Collections;

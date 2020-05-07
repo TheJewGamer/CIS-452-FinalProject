@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+ * Kevon Long
+ * EnemySpawner.cs
+ * Final Project
+ * Spawns items
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

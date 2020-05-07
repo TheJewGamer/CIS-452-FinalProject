@@ -1,6 +1,6 @@
 ﻿/*
     * Jake Buri
-    * iEnemy.cs
+    * DecoratorEnemy.cs
     * Final Project
     * Abstract enemy to be used in ArmorDecorator.cs
 */

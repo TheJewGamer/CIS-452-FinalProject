@@ -1,6 +1,7 @@
 ﻿/*
  * Kevon Long
  * Timer.cs
+ * Final Project
  * Shows how long you've got left in the run
  */
 
