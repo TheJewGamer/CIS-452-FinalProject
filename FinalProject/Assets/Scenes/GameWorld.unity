@@ -23774,6 +23774,14 @@ MonoBehaviour:
     prefab: {fileID: 6043360595852010712, guid: a0d3a1b3bc412c74985e335187d54460,
       type: 3}
     size: 10
+  - tag: MotorcycleEnemy
+    prefab: {fileID: 5111388805567211684, guid: 787b78089faa2104ebc1c35e2df3f12e,
+      type: 3}
+    size: 10
+  - tag: BicycleEnemy
+    prefab: {fileID: 5111388805567211684, guid: 906ed007927022e4488e7dc2c89d53b7,
+      type: 3}
+    size: 10
 --- !u!1 &1351588522084451469
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,11 +97,19 @@ public class ResourcePlacer : MonoBehaviour
 
                     float enemySelection = Random.Range(0f,1f);
 
-                    if (enemySelection < 0.3f)
+                    if (enemySelection < 0.15f)
+                    {
+                        newEnemy = enemyFactory.CreateEnemy("BicycleEnemy");
+                    }
+                    else if (enemySelection < 0.30f)
+                    {
+                        newEnemy = enemyFactory.CreateEnemy("MotorcycleEnemy");
+                    }
+                    else if (enemySelection <= 0.6f)
                     {
                         newEnemy = enemyFactory.CreateEnemy("FastEnemy");
                     }
-                    else if (enemySelection < 0.6f)
+                    else if (enemySelection <= 0.9f)
                     {
                         newEnemy = enemyFactory.CreateEnemy("HeavyEnemy");
                     }

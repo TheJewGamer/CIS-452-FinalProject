@@ -30,6 +30,12 @@ public abstract class TemplatEnemy: iEnemy
     
     private void Update() 
     {
+        if (playerLocation == null)
+        {
+            playerLocation = GameObject.FindGameObjectWithTag("Player").transform; 
+            return;
+        }
+
         //check to see if player is in range
         if(Vector2.Distance(this.gameObject.transform.position, playerLocation.position) <= DETECTION_DISTANCE)
         {
