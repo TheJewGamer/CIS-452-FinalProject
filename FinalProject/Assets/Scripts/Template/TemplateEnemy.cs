@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-public abstract class TemplatEnemy: MonoBehaviour
+public abstract class TemplatEnemy: iEnemy
 {
     //variables
     private Transform playerLocation;
@@ -41,7 +41,7 @@ public abstract class TemplatEnemy: MonoBehaviour
         }
     }
 
-    public void Attacked()
+    public override void Attacked()
     {
         //check to see if dead
         if(health <= 0)

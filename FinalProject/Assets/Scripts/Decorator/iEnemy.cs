@@ -11,5 +11,5 @@ using UnityEngine;
 
 public abstract class iEnemy : MonoBehaviour
 {
-    public abstract void Attacked(GameObject player);
+    public abstract void Attacked();
 }

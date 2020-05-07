@@ -9,8 +9,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ArmorDecorator : iEnemy
+public abstract class ArmorDecorator : TemplatEnemy
 {
-    private int armorValue;    
-    public abstract override void Attacked(GameObject player);
+    protected int armorValue;
+    public abstract void SetArmor();
 }

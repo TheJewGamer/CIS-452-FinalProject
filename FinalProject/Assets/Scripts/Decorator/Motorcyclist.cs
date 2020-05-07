@@ -9,18 +9,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Motorcyclist : iEnemy
+public class Motorcyclist : Bicyclist
 {
-    private int armorValue = 3;
-    public override void Attacked(GameObject player)
+    public Sprite damagedEnemy;
+    public override void Attacked()
     {
-        if (armorValue >= 0)
+        if (armorValue > 1)
         {
             armorValue--;
+            this.GetComponent<SpriteRenderer>().sprite = damagedEnemy;
         }
-        if (armorValue == 0)
+        else if (armorValue == 1)
         {
-            Destroy(this.gameObject);
+            armorValue--;
+            this.GetComponent<SpriteRenderer>().sprite = brokenEnemy;
         }
+        else
+        {
+            if (health <= 0)
+            {
+                //remove enemy
+                this.gameObject.SetActive(false);
+
+            }
+            else
+            {
+                //dec
+                health--;
+            }
+        }
+
+        //done
+        return;
+    }
+    public override void SetArmor()
+    {
+        armorValue = 2;
     }
 }

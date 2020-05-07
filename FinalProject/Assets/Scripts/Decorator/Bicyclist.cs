@@ -11,28 +11,49 @@ using UnityEngine;
 
 public class Bicyclist : ArmorDecorator
 {
-    public iEnemy _thisEnemy;
-    private int armorValue = 2;
+    public Sprite brokenEnemy;
 
     private void Start()
     {
-        _thisEnemy = GetComponent<iEnemy>();
-    }
-    public int GetArmor(iEnemy enemy)
-    {
-        return armorValue;
+        SetArmor();
     }
 
-    public override void Attacked(GameObject player)
+    public override void Attacked()
     {
-        if (armorValue >= 0)
+        if (armorValue >= 1)
         {
             armorValue--;
+            this.GetComponent<SpriteRenderer>().sprite = brokenEnemy;
         }
-        if (armorValue == 0)
+        else
         {
-            Destroy(this.gameObject);
+            if (health <= 0)
+            {
+                //remove enemy
+                this.gameObject.SetActive(false);
+
+            }
+            else
+            {
+                //dec
+                health--;
+            }
         }
     }
-
+    public override void SetArmor()
+    {
+        armorValue = 1;
+    }
+    public override void SetSpeed()
+    {
+        speed = 2f;
+    }
+    public override void SetDamage()
+    {
+        damage = 1;
+    }
+    public override void SetHealth()
+    {
+        health = 1;
+    }
 }
