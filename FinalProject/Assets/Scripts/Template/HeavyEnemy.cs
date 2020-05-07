@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-public class HeavyEnemy : TemplatEnemy 
+public class HeavyEnemy : TemplateEnemy 
 {
     public override void SetSpeed()
     {

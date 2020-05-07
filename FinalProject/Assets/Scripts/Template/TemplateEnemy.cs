@@ -1,13 +1,14 @@
 /*
     * Jacob Cohen
-    * TemplatEnemy.cs
+    * TemplateEnemy.cs
     * Final Project
     * main class for the template pattern
 */
 
 using UnityEngine;
+using System.Collections;
 
-public abstract class TemplatEnemy: iEnemy
+public abstract class TemplateEnemy: MonoBehaviour
 {
     //variables
     private Transform playerLocation;
@@ -47,19 +48,21 @@ public abstract class TemplatEnemy: iEnemy
         }
     }
 
-    public override void Attacked()
+    public void Attacked()
     {
+        //dec
+        health--;
+
         //check to see if dead
         if(health <= 0)
         {
             //remove enemy
             this.gameObject.SetActive(false);
-
         }
         else
         {
-            //dec
-            health--;
+            //feedback
+            StartCoroutine(HitFeedback());
         }
 
         //done
@@ -76,6 +79,18 @@ public abstract class TemplatEnemy: iEnemy
             //hide
             this.gameObject.SetActive(false);
         }    
+    }
+
+    private IEnumerator HitFeedback()
+    {
+        //red
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+
+        //wait
+        yield return new WaitForSecondsRealtime(.2f);
+
+        //normal
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     public abstract void SetSpeed();

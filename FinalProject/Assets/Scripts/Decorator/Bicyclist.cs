@@ -27,33 +27,12 @@ public class Bicyclist : ArmorDecorator
         }
         else
         {
-            if (health <= 0)
-            {
-                //remove enemy
-                this.gameObject.SetActive(false);
-
-            }
-            else
-            {
-                //dec
-                health--;
-            }
+            //remove enemy
+            this.gameObject.SetActive(false);
         }
     }
     public override void SetArmor()
     {
         armorValue = 1;
-    }
-    public override void SetSpeed()
-    {
-        speed = 2f;
-    }
-    public override void SetDamage()
-    {
-        damage = 1;
-    }
-    public override void SetHealth()
-    {
-        health = 1;
     }
 }

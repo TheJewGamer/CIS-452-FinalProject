@@ -26,17 +26,8 @@ public class Motorcyclist : Bicyclist
         }
         else
         {
-            if (health <= 0)
-            {
-                //remove enemy
-                this.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
 
-            }
-            else
-            {
-                //dec
-                health--;
-            }
         }
 
         //done
